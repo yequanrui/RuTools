@@ -3,21 +3,21 @@ use console::{style, StyledObject, Term};
 pub fn stdout(title: &str) -> Term {
     let term = Term::stdout();
     term.set_title(title);
-    return term;
+    term
 }
 
 pub fn info<D>(msg: D) -> StyledObject<D> {
-    return style(msg).cyan();
+    style(msg).cyan()
 }
 
 pub fn success<D>(msg: D) -> StyledObject<D> {
-    return style(msg).green();
+    style(msg).green()
 }
 
 pub fn warning<D>(msg: D) -> StyledObject<D> {
-    return style(msg).yellow();
+    style(msg).yellow()
 }
 
 pub fn error<D>(msg: D) -> StyledObject<D> {
-    return style(msg).red();
+    style(msg).red()
 }

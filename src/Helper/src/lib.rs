@@ -1,9 +1,9 @@
-mod console;
-mod common;
-mod i18n;
-mod reqwest;
-mod winapi;
-mod winreg;
+pub mod common;
+pub mod console;
+pub mod i18n;
+pub mod reqwest;
+pub mod winapi;
+pub mod winreg;
 
 pub fn add(left: u64, right: u64) -> u64 {
     left + right
@@ -11,9 +11,9 @@ pub fn add(left: u64, right: u64) -> u64 {
 
 #[cfg(test)]
 mod tests {
-    use super::*;
+  use super::*;
 
-    #[test]
+  #[test]
     fn it_works() {
         let result = add(2, 2);
         assert_eq!(result, 4);
