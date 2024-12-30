@@ -6,7 +6,7 @@ pub static ZH: &str = "2052";
 pub static EN: &str = "1033";
 
 pub fn is_zh() -> bool {
-    lang_id() == ZH.to_string()
+    lang_id() == *ZH
 }
 
 pub fn lc_id() -> String {

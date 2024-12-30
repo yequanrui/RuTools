@@ -25,8 +25,8 @@ pub fn create_file(file_name: &str) -> File {
         Ok(file) => file,
         Err(e) if e.kind() == ErrorKind::AlreadyExists => {
             // 文件已存在，删除并重新创建
-            remove_file(file_name).expect(get("delete_failed"));
-            File::create(file_name).expect(get("create_failed"))
+            remove_file(file_name).unwrap_or_else(|_| panic!("{}", get("delete_failed")));
+            File::create(file_name).unwrap_or_else(|_| panic!("{}", get("create_failed")))
         }
         Err(e) => {
             // 打印其他错误信息
@@ -41,7 +41,7 @@ pub fn open_url(url: &str) {
     if cfg!(target_os = "windows") {
         let mut cmd = Command::new("cmd");
         // 对url中的&使用^转义，如果不做处理，&后面的参数无法取到
-        cmd.args(&["/C", &format!("start {}", url.replace("&", "^&"))]);
+        cmd.args(["/C", &format!("start {}", url.replace("&", "^&"))]);
         match cmd.output() {
             Ok(output) => {
                 // 检查输出以确定命令是否成功
@@ -82,14 +82,12 @@ pub fn make_backup(og_path: String, version: String, is_install: bool) -> Result
         } else {
             Ok(false)
         }
+    } else if is_install {
+        install(og_path, destination);
+        Ok(true)
     } else {
-        if is_install {
-            install(og_path, destination);
-            Ok(true)
-        } else {
-            println!("-- {}", info(get("no_backup")));
-            Ok(false)
-        }
+        println!("-- {}", info(get("no_backup")));
+        Ok(false)
     }
 }
 
@@ -118,7 +116,7 @@ pub fn copy_func(from: &Path, to: &Path) -> Result<()> {
             }
         }
     } else {
-        copy_file(&from, &to)?;
+        copy_file(from, to)?;
     }
     Ok(())
 }
@@ -142,7 +140,7 @@ pub fn write_to(file_path: String, replaced_content: String, content: String) {
         println!("-- {}", info(get("skip_write")));
         return;
     }
-    write(file_path, replaced_content).expect(get("write_failed"));
+    write(file_path, replaced_content).unwrap_or_else(|_| panic!("{}", get("write_failed")));
     println!("-- {}\n", info(get("write_succeeded")));
 }
 
@@ -166,9 +164,10 @@ pub fn replace_str(file_path: String, replace_str: &str, replace_target: &str, i
             println!("- {}", get("replace_tips_1"));
             if content.contains(replace_str) {
                 if is_restore {
-                    println!("- {}", success(get("replace_tips_2")));
+                    println!("- {}", get("replace_tips_2"));
                     let replaced_content = content.replace(replace_str, "");
-                    write(file_path, replaced_content).expect(get("replace_failed"));
+                    write(file_path, replaced_content)
+                        .unwrap_or_else(|_| panic!("{}", get("replace_failed")));
                 } else {
                     println!(
                         "-- {}{}",
@@ -176,16 +175,14 @@ pub fn replace_str(file_path: String, replace_str: &str, replace_target: &str, i
                         warning(get("skip_replace_tips_4"))
                     );
                 }
+            } else if is_restore {
+                println!("-- {}", info(get("no_replace")));
             } else {
-                if is_restore {
-                    println!("-- {}", info(get("no_replace")));
-                } else {
-                    let replaced_content =
-                        content.replace(replace_target, &(replace_str.to_owned() + replace_target));
-                    match write(file_path, replaced_content) {
-                        Ok(()) => println!("-- {}", success(get("replace_succeeded"))),
-                        Err(err) => eprintln!("-- {}: {:?}", error(get("replace_failed")), err),
-                    }
+                let replaced_content =
+                    content.replace(replace_target, &(replace_str.to_owned() + replace_target));
+                match write(file_path, replaced_content) {
+                    Ok(()) => println!("-- {}", success(get("replace_succeeded"))),
+                    Err(err) => eprintln!("-- {}: {:?}", error(get("replace_failed")), err),
                 }
             }
         }
@@ -219,14 +216,14 @@ pub fn compare_version(origin_version: &str, target_version: &str) -> bool {
                 println!(
                     "{}{}\n",
                     get("compare_version_tips_1"),
-                    success(get("compare_version_tips_3"))
+                    warning(get("compare_version_tips_3"))
                 );
             }
         } else {
             println!(
                 "{}{}{}\n",
                 get("compare_version_tips_1"),
-                success(get("compare_version_tips_2")),
+                warning(get("compare_version_tips_4")),
                 info(origin_version)
             );
         }
@@ -234,7 +231,7 @@ pub fn compare_version(origin_version: &str, target_version: &str) -> bool {
         println!(
             "{}{}{}\n",
             get("compare_version_tips_1"),
-            success(get("compare_version_tips_2")),
+            warning(get("compare_version_tips_5")),
             info(origin_version)
         );
     }

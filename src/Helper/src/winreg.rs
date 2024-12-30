@@ -20,7 +20,7 @@ pub fn find_install_path_and_version(software_name: &str) -> (String, String) {
         let subkey = uninstall_key
             .open_subkey_with_flags(subkey_name, KEY_READ)
             .unwrap();
-        let display_name = subkey.get_value("DisplayName").unwrap_or(String::new());
+        let display_name: String = subkey.get_value("DisplayName").unwrap_or_default();
         let old_software_name = software_name.to_owned().replace("_", " ");
         if display_name.contains(software_name) || display_name.contains(&old_software_name) {
             let install_path = subkey.get_value("InstallLocation");

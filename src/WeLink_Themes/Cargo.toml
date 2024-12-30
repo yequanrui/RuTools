@@ -1,0 +1,18 @@
+[package]
+name = "welink_themes"
+version = "1.0.0"
+edition = "2021"
+
+[package.metadata.winres]
+OriginalFilename = "welink_themes.exe"
+FileDescription = "WeLink Themes Installer"
+ProductName = "WeLink"
+ProductVersion = "7.47.6"
+LegalCopyright = "Copyright (c) 2019-2024. Huawei Technologies Co., Ltd. All Rights Reserved."
+
+[dependencies]
+console-utils = "1.6"
+rt_helper = { path = "../Helper" }
+
+[target.'cfg(windows)'.build-dependencies]
+winres = "0.1"
