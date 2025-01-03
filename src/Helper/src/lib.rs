@@ -5,17 +5,14 @@ pub mod reqwest;
 pub mod winapi;
 pub mod winreg;
 
-pub fn add(left: u64, right: u64) -> u64 {
-    left + right
-}
-
 #[cfg(test)]
 mod tests {
-  use super::*;
+    use crate::winapi::{lang_id, lc_id, ui_language};
+    use crate::winreg::find_install_path_and_version;
 
-  #[test]
+    #[test]
     fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
+        println!("{}/{}/{}", lc_id(), lang_id(), ui_language());
+        println!("{:?}", find_install_path_and_version("WeLink"));
     }
 }

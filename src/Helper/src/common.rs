@@ -1,11 +1,12 @@
-use crate::console::{error, info, success, warning};
-use crate::i18n::get;
 use std::fs::{copy, create_dir_all, metadata, read_dir, read_to_string, remove_file, write, File};
 use std::io::{stdin, BufRead, ErrorKind, Result};
 use std::path::Path;
 use std::process::{exit, Command};
 use std::thread::sleep;
 use std::time::Duration;
+
+use crate::console::{error, info, success, warning};
+use crate::i18n::get;
 
 /// 控制台暂停，等待用户按下Enter键
 pub fn pause() {
@@ -30,7 +31,7 @@ pub fn create_file(file_name: &str) -> File {
         }
         Err(e) => {
             // 打印其他错误信息
-            eprintln!("Error: {e}",);
+            eprintln!("Error: {e}");
             exit(1);
         }
     }
@@ -231,7 +232,7 @@ pub fn compare_version(origin_version: &str, target_version: &str) -> bool {
         println!(
             "{}{}{}\n",
             get("compare_version_tips_1"),
-            warning(get("compare_version_tips_5")),
+            error(get("compare_version_tips_5")),
             info(origin_version)
         );
     }
