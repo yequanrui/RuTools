@@ -20,6 +20,30 @@ pub fn wait_for_exit(n: u64) {
     exit(0);
 }
 
+/// 控制台执行操作提示
+pub fn operation_tips() -> String {
+    format!(
+        "{}{}{}{}{}: ",
+        get("opera_tips_1"),
+        info(get("opera_tips_2")),
+        get("opera_tips_3"),
+        info(get("opera_tips_4")),
+        get("opera_tips_5")
+    )
+}
+
+/// 控制台执行结束提示
+pub fn end_tips(is_success: bool) {
+    if is_success {
+        println!(
+            "\n{} {}{}\n",
+            get("finished_tips"),
+            warning(get("restart_tips_1")),
+            get("restart_tips_2")
+        );
+    }
+}
+
 /// 创建文件，已存在就覆盖
 pub fn create_file(file_name: &str) -> File {
     match File::create(file_name) {
