@@ -1,7 +1,8 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Run RuTools" type="CargoCommandRunConfiguration" factoryName="Cargo Command">
-    <option name="command" value="run --package RuTools --bin RuTools" />
-    <option name="workingDirectory" value="file://$PROJECT_DIR$" />
+  <configuration default="false" name="Run WeLink_Msg_Style" type="CargoCommandRunConfiguration" factoryName="Cargo Command">
+    <option name="buildProfileId" value="dev" />
+    <option name="command" value="run" />
+    <option name="workingDirectory" value="file://$PROJECT_DIR$/WeLink_Msg_Style" />
     <envs />
     <option name="emulateTerminal" value="true" />
     <option name="channel" value="DEFAULT" />
