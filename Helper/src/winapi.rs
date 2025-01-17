@@ -22,5 +22,5 @@ pub fn ui_language() -> String {
 }
 
 pub fn get_welink_lang(cn: &str, en: &str) -> String {
-    format!("\"{}\"===window.langcode?\"{}\":\"{}\"", ZH, cn, en)
+    format!("\"{ZH}\"===window.langcode?\"{cn}\":\"{en}\"")
 }

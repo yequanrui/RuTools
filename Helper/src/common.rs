@@ -88,18 +88,18 @@ pub fn make_backup(og_path: String, version: String, is_install: bool) -> Result
         println!("- {}", get("backup_tips_1"));
         match copy(&og_path, &destination) {
             Ok(_) => println!("-- {}", success(get("backup_succeeded"))),
-            Err(err) => eprintln!("-- {}: {err}", error(get("backup_failed"))),
+            Err(e) => eprintln!("-- {}: {e}", error(get("backup_failed"))),
         }
     }
     if metadata(&destination).is_ok() {
         println!("-- {}", get("backup_tips_2"));
         match copy(&destination, &og_path) {
             Ok(_) => println!("-- {}", success(get("restore_succeeded"))),
-            Err(err) => eprintln!("-- {}: {err}", error(get("restore_failed"))),
+            Err(e) => eprintln!("-- {}: {e}", error(get("restore_failed"))),
         }
         match remove_file(&destination) {
             Ok(_) => println!("-- {}", success(get("delete_succeeded"))),
-            Err(err) => eprintln!("-- {}: {err}", error(get("delete_failed"))),
+            Err(e) => eprintln!("-- {}: {e}", error(get("delete_failed"))),
         }
         if is_install {
             install(og_path, destination);
@@ -152,7 +152,7 @@ pub fn copy_res(from_dir: &Path, to_dir: &Path) {
         match e.kind() {
             ErrorKind::NotFound => eprintln!("{}", get("not_found")),
             ErrorKind::PermissionDenied => eprintln!("{}", get("permission_denied")),
-            _ => eprintln!("Error: {:?}", e),
+            _ => eprintln!("Error: {e}"),
         }
     } else {
         println!("-- {}", success(get("copy_succeeded")));
@@ -207,18 +207,18 @@ pub fn replace_str(file_path: String, replace_str: &str, replace_target: &str, i
                     content.replace(replace_target, &(replace_str.to_owned() + replace_target));
                 match write(file_path, replaced_content) {
                     Ok(()) => println!("-- {}", success(get("replace_succeeded"))),
-                    Err(err) => eprintln!("-- {}: {:?}", error(get("replace_failed")), err),
+                    Err(e) => eprintln!("-- {}: {e}", error(get("replace_failed"))),
                 }
             }
         }
-        Err(ref err) if err.kind() == ErrorKind::NotFound => {
+        Err(ref e) if e.kind() == ErrorKind::NotFound => {
             eprintln!(
                 "- {}{}",
                 get("skip_replace_tips_2"),
                 warning(get("skip_replace_tips_3"))
             );
         }
-        Err(err) => eprintln!("Error: {:?}", err),
+        Err(e) => eprintln!("Error: {e}"),
     }
 }
 

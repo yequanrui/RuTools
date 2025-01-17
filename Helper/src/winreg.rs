@@ -52,10 +52,7 @@ pub fn find_install_path_and_version(software_name: &str) -> (String, String) {
  */
 pub fn find_user_data_path(path_str: &str, data_name: &str) -> String {
     let hkcu = RegKey::predef(HKEY_CURRENT_USER);
-    let path = format!(
-        "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\{}",
-        path_str
-    );
+    let path = format!("Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\{path_str}");
     let data = hkcu.open_subkey(path).unwrap();
     let value = data.get_value(data_name);
     value.unwrap_or_else(|_| panic!("Warning: {}", get("notfound_tips_3")))
