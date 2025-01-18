@@ -6,10 +6,12 @@
       <sourceFolder url="file://$MODULE_DIR$/Helper/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/WeLink_Msg_Style/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/WeLink_Themes/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Client/src-tauri/src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
       <excludeFolder url="file://$MODULE_DIR$/Helper/target" />
       <excludeFolder url="file://$MODULE_DIR$/WeLink_Msg_Style/target" />
       <excludeFolder url="file://$MODULE_DIR$/WeLink_Themes/target" />
+      <excludeFolder url="file://$MODULE_DIR$/Client/src-tauri/target" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
