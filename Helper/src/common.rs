@@ -83,7 +83,7 @@ pub fn open_url(url: &str) {
 
 /// 备份文件
 pub fn make_backup(og_path: String, version: String, is_install: bool) -> Result<bool> {
-    let destination = format!("{}.bak.{}", og_path, version);
+    let destination = format!("{og_path}.bak.{version}");
     fn install(og_path: String, destination: String) {
         println!("- {}", get("backup_tips_1"));
         match copy(&og_path, &destination) {
@@ -126,7 +126,6 @@ pub fn copy_file(from: &Path, to: &Path) -> Result<()> {
 }
 
 /// 递归复制文件/文件夹
-
 pub fn copy_func(from: &Path, to: &Path) -> Result<()> {
     if from.is_dir() {
         for entry in read_dir(from)? {
@@ -206,7 +205,7 @@ pub fn replace_str(file_path: String, replace_str: &str, replace_target: &str, i
                 let replaced_content =
                     content.replace(replace_target, &(replace_str.to_owned() + replace_target));
                 match write(file_path, replaced_content) {
-                    Ok(()) => println!("-- {}", success(get("replace_succeeded"))),
+                    Ok(_) => println!("-- {}", success(get("replace_succeeded"))),
                     Err(e) => eprintln!("-- {}: {e}", error(get("replace_failed"))),
                 }
             }
@@ -222,9 +221,44 @@ pub fn replace_str(file_path: String, replace_str: &str, replace_target: &str, i
     }
 }
 
+/// 批量替换文本
+pub fn replace_str_list(
+    file_path: &str,
+    replace_arr: Vec<Vec<&str>>,
+    install_version: &str,
+    is_install: bool,
+) {
+    println!("- {}: {}", get("start_replace"), info(&file_path));
+    let is_origin = make_backup(file_path.to_owned(), install_version.to_owned(), is_install)
+        .unwrap_or_else(|_| panic!("{}", get("backup_failed")));
+    if is_origin {
+        let content =
+            read_to_string(file_path).unwrap_or_else(|_| panic!("{}", get("read_failed")));
+        let mut replaced_content = content.clone();
+        for str in replace_arr {
+            replaced_content = replace(&replaced_content, str[0], str[1]);
+        }
+        write_to(file_path.to_owned(), replaced_content, content);
+    }
+}
+
+/// 往文件最后插入文本
+pub fn push_str(file_path: &str, replace_str: &str, install_version: &str, is_install: bool) {
+    println!("- {}: {}", get("start_replace"), info(&file_path));
+    let is_origin = make_backup(file_path.to_owned(), install_version.to_owned(), is_install)
+        .unwrap_or_else(|_| panic!("{}", get("backup_failed")));
+    if is_origin {
+        let content =
+            read_to_string(file_path).unwrap_or_else(|_| panic!("{}", get("read_failed")));
+        let mut replaced_content = content.clone();
+        replaced_content.push_str(replace_str);
+        write_to(file_path.to_owned(), replaced_content, content);
+    }
+}
+
 /// 判断是否匹配目标版本a.b.c
 ///
-/// 完全匹配返回true，皆返回false
+/// 完全匹配返回true，其余皆返回false
 pub fn compare_version(origin_version: &str, target_version: &str) -> bool {
     let origin_nums: Vec<&str> = origin_version.split(".").collect();
     let target_nums: Vec<&str> = target_version.split(".").collect();
