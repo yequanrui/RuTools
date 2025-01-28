@@ -61,6 +61,8 @@ pub fn get_data(key: &str) -> [&str; 2] {
         "request_failed" => ["Failed to send request.", "请求失败"],
         "response_failed" => ["Failed to read response body.", "无法读取响应正文"],
         "binary_not_exist" => ["The binary package does not exist.", "二进制包不存在"],
+        "read_metadata_failed" => ["Unable to read Cargo metadata.", "无法读取Cargo元数据"],
+        "package_not_found" => ["The package was not found in the Cargo metadata.", "Cargo元数据中未找到该包"],
         _ => [key, key]
     }
 }

@@ -1,9 +1,10 @@
 [package]
 name = "rt_helper"
-version = "1.0.6"
+version = "1.0.7"
 edition = "2021"
 
 [dependencies]
+cargo_metadata = "0.19"
 console = "0.15"
 reqwest = { version = "0.12", features = ["json"] }
 serde_json = "1"

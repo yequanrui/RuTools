@@ -13,6 +13,19 @@ use std::path::PathBuf;
 mod data;
 mod i18n;
 
+#[cfg(test)]
+mod tests {
+    use rt_helper::metadata::get_metadata;
+
+    #[test]
+    fn it_works() {
+        println!(
+            "{}",
+            get_metadata(env!("CARGO_PKG_NAME"), "winres", "ProductName")
+        );
+    }
+}
+
 fn main() -> Result<(), Box<dyn Error>> {
     let install_path = preset();
 
@@ -150,6 +163,7 @@ fn copy_assets(install_path: String, theme: &str) {
         info(theme),
         i18n::get("copying_tips_2")
     );
+    println!("{}", install_path);
 }
 
 /// 预置操作
@@ -161,7 +175,7 @@ fn preset() -> String {
         info(env!("CARGO_PKG_NAME")),
         info(env!("CARGO_PKG_VERSION"))
     );
-    let software_name = "WeLink";
+    let software_name = &*data::product_name();
     println!(
         "- {}{}{}",
         i18n::get("install_tips_1"),
@@ -182,18 +196,18 @@ fn preset() -> String {
     println!(
         "{}{}{}{}\n",
         i18n::get("installed_tips_1"),
-        info(data::PROGRAM_VERSION),
+        info(data::product_major_version()),
         i18n::get("installed_tips_2"),
-        info(data::RESOURCE_VERSION)
+        info(data::product_version())
     );
     // 判断主题资源版本与WeLink版本是否匹配
-    if !compare_version(data::RESOURCE_VERSION, &install_version) {
+    if !compare_version(&data::product_version(), &install_version) {
         println!(
             "{}{}{}: {}\n",
             i18n::get("download_tips_1"),
-            info(data::PROGRAM_VERSION),
+            info(data::product_major_version()),
             i18n::get("download_tips_2"),
-            info(data::WELINK_7_VERSIONS_PAGE)
+            info(data::PRODUCT_PAGE)
         )
     }
     install_path
