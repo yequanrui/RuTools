@@ -3,6 +3,7 @@ pub mod console;
 pub mod i18n;
 pub mod metadata;
 pub mod reqwest;
+pub mod update;
 pub mod winapi;
 pub mod winreg;
 
