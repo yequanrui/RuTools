@@ -31,5 +31,8 @@ pub fn get_package_metadata(package_name: &str) -> Value {
 
 /// 获取指定包的指定资源的指定参数
 pub fn get_metadata(package_name: &str, resource_name: &str, param_name: &str) -> String {
-    get_package_metadata(package_name)[resource_name][param_name].to_string()
+    get_package_metadata(package_name)[resource_name][param_name]
+        .as_str()
+        .unwrap()
+        .to_string()
 }

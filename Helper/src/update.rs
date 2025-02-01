@@ -1,6 +1,6 @@
 use self_update::cargo_crate_version;
 
-fn update(bin_name: &str) -> Result<(), Box<dyn std::error::Error>> {
+pub fn update(bin_name: &str) -> Result<(), Box<dyn std::error::Error>> {
     let status = self_update::backends::github::Update::configure()
         .repo_owner("yequanrui")
         .repo_name("RuTools")
