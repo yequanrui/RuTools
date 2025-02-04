@@ -1,6 +1,6 @@
 [package]
 name = "welink_msg_style"
-version = "1.1.7"
+version = "1.1.8"
 authors = ["yequanrui <yequanrui@qq.com>"]
 edition = "2021"
 description = "WeLink Msg Style Installer"
@@ -23,6 +23,7 @@ console-utils = "1.6"
 rt_helper = { path = "../Helper" }
 
 [target.'cfg(windows)'.build-dependencies]
+rt_helper = { path = "../Helper" }
 winres = "0.1"
 
 [profile.release]

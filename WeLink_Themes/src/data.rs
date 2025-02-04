@@ -70,9 +70,9 @@ pub fn assets_list() -> Vec<&'static str> {
         // 图片查看器
         "plugin/previewPicture/dist/index.html",
     ];
-    let spec_list = match is_internal_version() {
+    let spec_list = if is_internal_version() {
         // 仅红We（内部版本）使用
-        true => vec![
+        vec![
             // 聊天消息页面-小微助手侧滑框
             // 小微助手页面
             "plugin/athenaAssistant/dist/index.html",
@@ -80,9 +80,10 @@ pub fn assets_list() -> Vec<&'static str> {
             "plugin/im/dist/singleChatSetting.html",
             // 桌面右下角语音通话/多媒体会议提醒
             "plugin/UCconference/dist/videoConfView.html",
-        ],
+        ]
+    } else {
         // 仅蓝We使用
-        false => vec![
+        vec![
             // 登录页面-基本设置-网络检测弹窗
             "plugin/basic/networkdetection/dist/networkdetection.html",
             // 业务页面
@@ -103,8 +104,7 @@ pub fn assets_list() -> Vec<&'static str> {
             "plugin/OneWIFI/dist/index.html",
             // 问题反馈弹窗
             "plugin/feedback/dist/feedback.html",
-        ],
-        _ => vec![],
+        ]
     };
     common_list.into_iter().chain(spec_list).collect()
 }

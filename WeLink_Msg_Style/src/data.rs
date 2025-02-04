@@ -1,5 +1,10 @@
 use crate::i18n::get_by_lang;
 
+/// 是否内部版本
+pub fn is_internal_version() -> bool {
+    env!("PRODUCT_NAME") == "WeLink_Desktop"
+}
+
 /// 显眼包格式分享表格链接
 pub const MSG_STYLE_TABLE: &str = "https://kdocs.cn/l/cs7U6nzAF1GG";
 
@@ -25,7 +30,7 @@ pub const GET_CURRENT_ID: &str =
 /// 发送消息的代码
 pub fn send_msg_replace(replace_str: &str) -> String {
     let mut res = String::from(replace_str);
-    res.push_str("const wla=JSON.parse(localStorage.getItem('welink_msg_config://whitelist')||'[]'),bla=JSON.parse(localStorage.getItem('welink_msg_config://blacklist')||'[]');let sc=localStorage.getItem('welink_msg_config://style_config');if(!localStorage.getItem('welink_msg_config://feature_enable')||(wla.length&&wla.includes(a))||!wla.includes(a)&&bla.includes(a)))sc='';''===sc.trim()||''===e.trim()||e.includes('<')&&/<img [^>]*role=\"(picture|file)\"[^>]*>/gi.test(e)||(e=sc.replaceAll({{ORI_CONTENT}}',e));");
+    res.push_str("const wla=JSON.parse(localStorage.getItem('welink_msg_config://whitelist')||'[]'),bla=JSON.parse(localStorage.getItem('welink_msg_config://blacklist')||'[]');let sc=localStorage.getItem('welink_msg_config://style_config');if(!localStorage.getItem('welink_msg_config://feature_enable')||(wla.length&&!wla.includes(a))||(!wla.includes(a)&&bla.includes(a)))sc='';''===sc.trim()||''===e.trim()||e.includes('<')&&/<img [^>]*role=\"(picture|file)\"[^>]*>/gi.test(e)||(e=sc.replaceAll('{{ORI_CONTENT}}',e));");
     res
 }
 
@@ -35,7 +40,7 @@ pub fn toolbar_replace() -> String {
     let pub_str = ",width:20,height:20,fill:\"#666\",hide:!1,isShow:!0}";
     res.push_str(&format!(
         ",{{type:\"{TYPE_ENABLE}\",toolItemTestid:\"{TYPE_ENABLE}{TEST_ID_SUFFIX}\",title:({})+\": \"+(localStorage.getItem('welink_msg_config://feature_enable')?{}:{})",
-        get_by_lang("msg_style_enable"),
+        get_by_lang("msg_style"),
         get_by_lang("enabled"),
         get_by_lang("disabled"),
     ));
@@ -77,7 +82,7 @@ pub fn toolbar_replace() -> String {
     ));
     res.push_str(&new_pub_str.replace(
         "}",
-        "&&localStorage.getItem('welink_msg_config://whitelist')}",
+        "&&!localStorage.getItem('welink_msg_config://whitelist')}",
     ));
     res.push_str(&format!(
         ",{{type:\"{TYPE_CLEAR_BLACK}\",toolItemTestid:\"{TYPE_CLEAR_BLACK}{TEST_ID_SUFFIX}\",title:{}",
@@ -102,7 +107,7 @@ pub fn toolbar_replace() -> String {
 /// key2取".open"前的单词
 pub fn toolbar_cb_replace(key1: &str, key2: &str) -> String {
     let mut res = String::new();
-    let origin_msg_config = "'<span style=\"display:block;color:transparent !important;background:linear-gradient(135deg,#3C51A6,#207AB3,#169E6C,#6CA83B,#B58200,B54E04,#B02121.#AD215B,#572DB3);-webkit-background-size:100% 100%;-webkit-background-clip:text;-webkit-text-stroke:.1px transparent;letter-spacing:2px;\">{{ORI_CONTENT}}</span>'";
+    let origin_msg_config = "'<span style=\"display:block;color:transparent !important;background:linear-gradient(135deg,#3C51A6,#207AB3,#169E6C,#6CA83B,#B58200,#B54E04,#B02121,#AD215B,#572DB3);-webkit-background-size:100% 100%;-webkit-background-clip:text;-webkit-text-stroke:.1px transparent;letter-spacing:2px;\">{{ORI_CONTENT}}</span>'";
     res.push_str(&format!("async ({})=>{{", key1));
     res.push_str("const pc=e=>window.Pedestal.callMethod('method://pedestal/confirm',{dialogId:1223,content:e}),pt=e=>window.Pedestal.callMethod('method://pedestal/toast',{content:e}),pnp=e=>window.Pedestal.callMethod('method://pedestal/notifyPrompt',e),fe='welink_msg_config://feature_enable',mc='welink_msg_config://style_config',wl='welink_msg_config://whitelist',bl='welink_msg_config://blacklist';");
     res.push_str(&format!("switch({}.type){{", key1));

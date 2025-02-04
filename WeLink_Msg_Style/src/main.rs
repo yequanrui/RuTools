@@ -1,9 +1,119 @@
+use console_utils::input::select;
+use rt_helper::common::{end_tips, operation_tips, wait_for_exit};
+use rt_helper::console::{info, stdout, warning};
+use rt_helper::winreg::find_install_path_and_version;
+use std::collections::BTreeMap;
+use std::error::Error;
+
 mod data;
 mod i18n;
 mod version;
 
-fn main() {
-    println!("Hello, {}!", env!("CARGO_PKG_NAME"));
+#[cfg(test)]
+mod tests {
+    use crate::data::{send_msg_replace, toolbar_cb_replace, toolbar_replace};
+
+    #[test]
+    fn it_works() {
+        let send_msg_ori = "t.handSendMsg=async function(e,t,a,n){";
+        let editor_toolbar = "{type:\"CodeBlockBtn\",toolItemTestid:\"CodeBlockBtn000123\",title:window.language.CODEBLCOK,width:20,height:20,fill:\"#666\",hide:!1,isShow:!0}]";
+        println!(
+            "{}\n{}\n{}",
+            send_msg_replace(send_msg_ori),
+            editor_toolbar.replace("]", &toolbar_replace()),
+            toolbar_cb_replace("l", "e")
+        );
+    }
 }
 
-fn preset() {}
+fn main() -> Result<(), Box<dyn Error>> {
+    let (install_path, install_version) = preset();
+    // 使用BTreeMap可以保持键的插入顺序
+    let mut compatible_versions: BTreeMap<&str, fn(String, String, bool)> = BTreeMap::new();
+    if data::is_internal_version() {
+        // 仅红We（内部版本）使用
+        compatible_versions.insert("7.11.3", version::v7_11::main);
+        compatible_versions.insert("7.12.7", version::v7_12::main);
+        compatible_versions.insert("7.13.12", version::v7_13::main);
+        compatible_versions.insert("7.14.8", version::v7_14::main);
+        compatible_versions.insert("7.15.8", version::v7_15_16::main);
+        compatible_versions.insert("7.16.8", version::v7_15_16::main);
+        compatible_versions.insert("7.17.16", version::v7_17::main);
+        compatible_versions.insert("7.18.7", version::v7_18::main);
+    } else {
+        // 仅蓝We使用
+        compatible_versions.insert("7.48.6", version::v7_48::main);
+    }
+    let keys: Vec<&str> = compatible_versions.clone().into_keys().collect();
+    println!(
+        "{}: {}\n",
+        i18n::get("supported_versions"),
+        info(keys.join(", "))
+    );
+    // 判断版本是否匹配（忽略小版本差异）并开始执行
+    let mut is_success = false;
+    let mut version = install_version.as_str();
+    for &key in &keys {
+        let v = version.rsplit_once(".").unwrap();
+        if key != version && key.starts_with(&format!("{}.", v.0)) {
+            version = key;
+            println!(
+                "{}{}\n",
+                i18n::get("compare_version_tips_1"),
+                warning(i18n::get("compare_version_tips_3"))
+            );
+            break;
+        }
+    }
+    match compatible_versions.get(version) {
+        Some(&value) => {
+            let options = [i18n::get("install_or_update"), i18n::get("uninstall")];
+            let index = select(&operation_tips(), &options).to_owned();
+            let is_install = index == 0;
+            println!(
+                "\n{}{}{}...\n",
+                i18n::get("begin_tips_1"),
+                info(options[index]),
+                i18n::get("begin_tips_2")
+            );
+            value(install_path.clone(), install_version.clone(), is_install);
+            is_success = true;
+        }
+        None => println!(
+            "{}{}{}\n",
+            i18n::get("no_config_tips_1"),
+            info(&install_path),
+            i18n::get("no_config_tips_2")
+        ),
+    }
+    // 执行结束
+    end_tips(is_success);
+    wait_for_exit(5);
+    Ok(())
+}
+
+/// 预置操作
+fn preset() -> (String, String) {
+    stdout(i18n::get("win_title"));
+    println!(
+        "{}{} {}\n",
+        i18n::get("welcome_to"),
+        info(env!("CARGO_PKG_NAME")),
+        info(env!("CARGO_PKG_VERSION"))
+    );
+    let software_name = env!("PRODUCT_NAME");
+    println!(
+        "- {}{}{}",
+        i18n::get("install_tips_1"),
+        info(software_name),
+        i18n::get("install_tips_2")
+    );
+    let (install_path, install_version) = find_install_path_and_version(software_name);
+    println!(
+        "-- {}: {}",
+        i18n::get("installed_version"),
+        info(&install_version)
+    );
+    // TODO 检查安装程序是否有最新版本
+    (install_path, install_version)
+}

@@ -1,6 +1,6 @@
 [package]
 name = "welink_themes"
-version = "1.0.7"
+version = "1.0.8"
 authors = ["yequanrui <yequanrui@qq.com>"]
 edition = "2021"
 description = "WeLink Themes Installer"
@@ -21,7 +21,6 @@ LegalCopyright = "Copyright (c) 2019-2024. Huawei Technologies Co., Ltd. All Rig
 [dependencies]
 console-utils = "1.6"
 rt_helper = { path = "../Helper" }
-log = "0.4.22"
 
 [target.'cfg(windows)'.build-dependencies]
 rt_helper = { path = "../Helper" }

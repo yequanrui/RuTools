@@ -16,6 +16,16 @@ pub fn main(install_path: String, install_version: String, is_install: bool) {
         &install_version,
         is_install,
     );
+    file_path = format!(
+        r"{}\resources\app\plugin\im\dist\im\static\js\common.js",
+        install_path
+    );
+    replace_str_list(
+        &file_path,
+        replace_arr.clone(),
+        &install_version,
+        is_install,
+    );
     // 替换菜单逻辑
     let editor_toolbar = "{type:\"CodeBlockBtn\",toolItemTestid:\"CodeBlockBtn000123\",title:window.language.CODEBLCOK,width:20,height:20,fill:\"#666\",hide:!1,isShow:!0}]";
     let editor_toolbar_new = editor_toolbar.replace("]", &toolbar_replace());
@@ -36,7 +46,27 @@ pub fn main(install_path: String, install_version: String, is_install: bool) {
         is_install,
     );
     file_path = format!(
+        r"{}\resources\app\plugin\im\dist\im\static\js\2473.js",
+        install_path
+    );
+    replace_str_list(
+        &file_path,
+        replace_arr.clone(),
+        &install_version,
+        is_install,
+    );
+    file_path = format!(
         r"{}\resources\app\pedestal\im\static\css\2473.css",
+        install_path
+    );
+    push_str(
+        &file_path,
+        &toolbar_icon_replace(),
+        &install_version,
+        is_install,
+    );
+    file_path = format!(
+        r"{}\resources\app\plugin\im\dist\im\static\css\2473.css",
         install_path
     );
     push_str(

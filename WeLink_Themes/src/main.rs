@@ -29,31 +29,30 @@ mod tests {
 fn main() -> Result<(), Box<dyn Error>> {
     let install_path = preset();
 
-    match data::is_internal_version() {
-        true => {
-            let options = [
-                i18n::get("community_theme"),
-                i18n::get("dev_theme"),
-                i18n::get("super_theme"),
-                i18n::get("uninstall_theme"),
-            ];
-            let index = select(&operation_tips(), &options).to_owned();
-            match Some(index) {
-                Some(0) => install_community(install_path),
-                Some(1) => install(install_path, "dev", true),
-                Some(2) => install(install_path, "superTheme", true),
-                Some(3) => revert(install_path, true),
-                _ => {}
-            }
+    if data::is_internal_version() {
+        // 仅红We（内部版本）使用
+        let options = [
+            i18n::get("community_theme"),
+            i18n::get("dev_theme"),
+            i18n::get("super_theme"),
+            i18n::get("uninstall_theme"),
+        ];
+        let index = select(&operation_tips(), &options).to_owned();
+        match Some(index) {
+            Some(0) => install_community(install_path),
+            Some(1) => install(install_path, "dev", true),
+            Some(2) => install(install_path, "superTheme", true),
+            Some(3) => revert(install_path, true),
+            _ => {}
         }
-        false => {
-            let options = [i18n::get("dev_theme"), i18n::get("uninstall_theme")];
-            let index = select(&operation_tips(), &options).to_owned();
-            match Some(index) {
-                Some(0) => install(install_path, "dev", false),
-                Some(1) => revert(install_path, false),
-                _ => {}
-            }
+    } else {
+        // 仅蓝We使用
+        let options = [i18n::get("dev_theme"), i18n::get("uninstall_theme")];
+        let index = select(&operation_tips(), &options).to_owned();
+        match Some(index) {
+            Some(0) => install(install_path, "dev", false),
+            Some(1) => revert(install_path, false),
+            _ => {}
         }
     }
 
