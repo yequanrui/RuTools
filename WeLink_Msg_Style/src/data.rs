@@ -55,6 +55,11 @@ pub fn toolbar_replace() -> String {
     ));
     res.push_str(&new_pub_str);
     res.push_str(&format!(
+        ",{{type:\"{TYPE_MORE}\",toolItemTestid:\"{TYPE_MORE}{TEST_ID_SUFFIX}\",title:{}",
+        get_by_lang("more_style"),
+    ));
+    res.push_str(&new_pub_str);
+    res.push_str(&format!(
         ",{{type:\"{TYPE_RESET}\",toolItemTestid:\"{TYPE_RESET}{TEST_ID_SUFFIX}\",title:{}",
         get_by_lang("reset_style"),
     ));
@@ -113,7 +118,7 @@ pub fn toolbar_cb_replace(key1: &str, key2: &str) -> String {
     res.push_str(&format!("switch({}.type){{", key1));
     // 启用/禁用显眼包
     res.push_str(&format!(
-        "case'{TYPE_ENABLE}':if(localStorage.getItem(fe)){{localStorage.removeItem(fe),pt({})}}else{{localStorage.setItem(fe,'true');pt({}),!localStorage.getItem(mc)&&localStorage.setItem(mc,{origin_msg_config})}}e.open&&e.open(!1);break;",
+        "case'{TYPE_ENABLE}':if(localStorage.getItem(fe)){{localStorage.removeItem(fe),pt({})}}else{{localStorage.setItem(fe,'true'),pt({}),!localStorage.getItem(mc)&&localStorage.setItem(mc,{origin_msg_config})}}e.open&&e.open(!1);break;",
         get_by_lang("msg_style_disabled"),
         get_by_lang("msg_style_enabled"),
     ));

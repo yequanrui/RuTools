@@ -21,6 +21,7 @@ LegalCopyright = "Copyright (c) 2019-2024. Huawei Technologies Co., Ltd. All Rig
 [dependencies]
 console-utils = "1.6"
 rt_helper = { path = "../Helper" }
+tokio = "1.43"
 
 [target.'cfg(windows)'.build-dependencies]
 rt_helper = { path = "../Helper" }

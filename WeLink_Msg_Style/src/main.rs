@@ -1,9 +1,11 @@
 use console_utils::input::select;
-use rt_helper::common::{end_tips, operation_tips, wait_for_exit};
+use rt_helper::common::{end_tips, judge_version, open_url, operation_tips, wait_for_exit};
 use rt_helper::console::{info, stdout, warning};
+use rt_helper::reqwest::{get_latest_package_ids, OPENX_DOWNLOAD_PAGE, OPENX_PROJECT_ID};
 use rt_helper::winreg::find_install_path_and_version;
 use std::collections::BTreeMap;
 use std::error::Error;
+use tokio;
 
 mod data;
 mod i18n;
@@ -82,7 +84,7 @@ fn main() -> Result<(), Box<dyn Error>> {
         None => println!(
             "{}{}{}\n",
             i18n::get("no_config_tips_1"),
-            info(&install_path),
+            info(&install_version),
             i18n::get("no_config_tips_2")
         ),
     }
@@ -114,6 +116,30 @@ fn preset() -> (String, String) {
         i18n::get("installed_version"),
         info(&install_version)
     );
-    // TODO 检查安装程序是否有最新版本
+    println!(
+        "-- {}: {}\n",
+        i18n::get("installed_path"),
+        info(&install_path)
+    );
+    // 检查安装程序是否有最新版本
+    if data::is_internal_version() {
+        tokio::runtime::Runtime::new().unwrap().block_on(async {
+            let package = get_latest_package_ids(OPENX_PROJECT_ID, env!("CARGO_PKG_NAME"))
+                .await
+                .unwrap();
+            if judge_version(env!("CARGO_PKG_VERSION"), package[1].as_str()) {
+                println!(
+                    "{}: {}\n{}\n",
+                    i18n::get("update_tips_1"),
+                    info(package[1].clone()),
+                    i18n::get("update_tips_2")
+                );
+                open_url(OPENX_DOWNLOAD_PAGE);
+                wait_for_exit(5);
+            } else {
+                println!("{}\n", i18n::get("update_tips_3"));
+            }
+        })
+    }
     (install_path, install_version)
 }

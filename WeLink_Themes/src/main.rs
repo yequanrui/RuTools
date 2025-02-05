@@ -138,7 +138,7 @@ fn install(install_path: String, theme: &str, is_internal: bool) {
     println!(
         "\n{}{}{}...",
         i18n::get("installing_tips_1"),
-        theme,
+        &theme,
         i18n::get("installing_tips_2")
     );
     if is_internal {
@@ -297,7 +297,7 @@ fn preset() -> String {
             info(data::product_major_version()),
             i18n::get("download_tips_2"),
             info(data::PRODUCT_PAGE)
-        )
+        );
     }
     install_path
 }

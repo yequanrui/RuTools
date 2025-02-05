@@ -26,7 +26,7 @@ pub fn assets_list() -> Vec<&'static str> {
         "plugin/callRecord/dist/meetingDetails.html",
         // 基座页面-更换头像弹框
         "plugin/contact/dist/avatarSetting.html",
-        // 基座页面-通话与拨号弹框
+        // 基座页面-查看头像
         "plugin/contact/dist/avatarView.html",
         // 基座页面-联系人详情弹框
         "plugin/contact/dist/contactDetail.html",
@@ -77,7 +77,7 @@ pub fn assets_list() -> Vec<&'static str> {
             // 小微助手页面
             "plugin/athenaAssistant/dist/index.html",
             // 群成员选择框
-            "plugin/im/dist/singleChatSetting.html",
+            "plugin/im/dist/memberChooser.html",
             // 桌面右下角语音通话/多媒体会议提醒
             "plugin/UCconference/dist/videoConfView.html",
         ]
