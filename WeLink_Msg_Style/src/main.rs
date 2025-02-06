@@ -5,7 +5,6 @@ use rt_helper::reqwest::{get_latest_package_ids, OPENX_DOWNLOAD_PAGE, OPENX_PROJ
 use rt_helper::winreg::find_install_path_and_version;
 use std::collections::BTreeMap;
 use std::error::Error;
-use tokio;
 
 mod data;
 mod i18n;
@@ -13,9 +12,9 @@ mod version;
 
 #[cfg(test)]
 mod tests {
-    use crate::data::{send_msg_replace, toolbar_cb_replace, toolbar_replace};
+  use crate::data::{send_msg_replace, toolbar_cb_replace, toolbar_replace};
 
-    #[test]
+  #[test]
     fn it_works() {
         let send_msg_ori = "t.handSendMsg=async function(e,t,a,n){";
         let editor_toolbar = "{type:\"CodeBlockBtn\",toolItemTestid:\"CodeBlockBtn000123\",title:window.language.CODEBLCOK,width:20,height:20,fill:\"#666\",hide:!1,isShow:!0}]";
@@ -139,7 +138,7 @@ fn preset() -> (String, String) {
             } else {
                 println!("{}\n", i18n::get("update_tips_3"));
             }
-        })
+        });
     }
     (install_path, install_version)
 }

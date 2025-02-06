@@ -1,4 +1,11 @@
-pub const PRODUCT_PAGE: &str = "https://www.huaweicloud.com/product/welink-download.html";
+// 产品包下载链接
+pub fn product_download_url() -> &'static str {
+    if is_internal_version() {
+        "https://onebox.huawei.com/v/14893661f51ee0f762b9d1dffe8b5aa0/list#linkFolder/1/29"
+    } else {
+        "https://www.huaweicloud.com/product/welink-download.html"
+    }
+}
 
 /// 获取主版本号
 pub fn product_major_version() -> String {
@@ -26,7 +33,7 @@ pub fn assets_list() -> Vec<&'static str> {
         "plugin/callRecord/dist/meetingDetails.html",
         // 基座页面-更换头像弹框
         "plugin/contact/dist/avatarSetting.html",
-        // 基座页面-查看头像
+        // 基座页面-查看头像弹框
         "plugin/contact/dist/avatarView.html",
         // 基座页面-联系人详情弹框
         "plugin/contact/dist/contactDetail.html",

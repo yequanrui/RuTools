@@ -6,10 +6,22 @@ pub fn is_internal_version() -> bool {
 }
 
 /// 显眼包格式分享表格链接
-pub const MSG_STYLE_TABLE: &str = "https://kdocs.cn/l/cs7U6nzAF1GG";
+pub fn msg_style_table() -> &'static str {
+    if is_internal_version() {
+        "https://onebox.huawei.com/v/6a867afe371ad4ed775adbff18b7f5f5?type=0"
+    } else {
+        "https://kdocs.cn/l/cs7U6nzAF1GG"
+    }
+}
 
 /// 显眼包帮助文档链接
-pub const MSG_STYLE_HELP: &str = "";
+pub fn msg_style_help() -> &'static str {
+    if is_internal_version() {
+        "https://welink-themes.openx.huawei.com/welink/styleMsg/"
+    } else {
+        "https:yequanrui.github.io/WeTools/styleMsg/"
+    }
+}
 
 /// 显眼包菜单键值（供type和testid字段使用）
 pub const TYPE_ENABLE: &str = "XianYanBaoEnable";
@@ -130,7 +142,10 @@ pub fn toolbar_cb_replace(key1: &str, key2: &str) -> String {
         get_by_lang("modify_msg_style_success"),
     ));
     // 更多显眼格式
-    res.push_str(&format!("case'{TYPE_MORE}':window.Pedestal.callMethod('method://pedestal/openUrl','{MSG_STYLE_TABLE}'),e.open&&e.open(!1);break;"));
+    res.push_str(&format!(
+        "case'{TYPE_MORE}':window.Pedestal.callMethod('method://pedestal/openUrl','{}'),e.open&&e.open(!1);break;",
+        msg_style_table(),
+    ));
     // 重置显眼格式
     res.push_str(&format!(
         "case'{TYPE_RESET}':{{const ac=await pc({});if(ac.ret){{localStorage.setItem(mc,{origin_msg_config});pt({})}}e.open&&e.open(!1)}}break;",
@@ -164,7 +179,10 @@ pub fn toolbar_cb_replace(key1: &str, key2: &str) -> String {
         get_by_lang("blacklist_cleared"),
     ));
     // 帮助文档
-    res.push_str(&format!("case'{TYPE_HELP}':window.Pedestal.callMethod('method://pedestal/openUrl','{MSG_STYLE_HELP}'),e.open&&e.open(!1);break;"));
+    res.push_str(&format!(
+        "case'{TYPE_HELP}':window.Pedestal.callMethod('method://pedestal/openUrl','{}'),e.open&&e.open(!1);break;",
+        msg_style_help(),
+    ));
     res.replace("e.open", &format!("{key2}.open"))
 }
 

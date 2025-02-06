@@ -27,7 +27,7 @@ pub fn get(key: &str) -> &str {
         "user_style_path" => ["User Extended Style Sheet Path", "用户扩展样式表路径"],
         "config_tips" => ["The configuration file ", "配置文件"],
         "style_tips" => ["Extended style sheet ", "扩展样式表"],
-        "skip_tips" => ["already exist. Skip the creation.", "已存在，跳过创建"],
+        "skip_tips" => ["already exists. Skip the creation.", "已存在，跳过创建"],
         "non_unicode_tips" => ["User directory path contains non-Unicode characters", "用户目录路径包含非Unicode字符"],
         "no_user_dir_tips" => ["Error getting user directory", "获取用户目录时出错"],
         "no_dir_tips" => ["Error getting current directory", "获取当前目录时出错"],

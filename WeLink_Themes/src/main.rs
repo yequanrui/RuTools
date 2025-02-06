@@ -1,6 +1,6 @@
 use console_utils::input::select;
 use rt_helper::common::{
-    compare_version, copy_res, end_tips, operation_tips, replace_str, wait_for_exit,
+  compare_version, copy_res, end_tips, operation_tips, replace_str, wait_for_exit,
 };
 use rt_helper::console::{info, stdout, warning};
 use rt_helper::winapi::is_zh;
@@ -15,9 +15,9 @@ mod i18n;
 
 #[cfg(test)]
 mod tests {
-    use rt_helper::metadata::get_metadata;
+  use rt_helper::metadata::get_metadata;
 
-    #[test]
+  #[test]
     fn it_works() {
         println!(
             "{}",
@@ -69,7 +69,7 @@ fn install_community(install_path: String) {
         info(i18n::get("community")),
         i18n::get("installing_tips_2")
     );
-    replace_html(install_path.clone(), true); // 目前自定义主题与社区版不兼容，安装钱先卸载自定义主题
+    replace_html(install_path.clone(), true); // 目前自定义主题与社区版不兼容，安装前先卸载自定义主题
     match env::current_exe() {
         Ok(mut path) => {
             path.pop();
@@ -296,7 +296,7 @@ fn preset() -> String {
             i18n::get("download_tips_1"),
             info(data::product_major_version()),
             i18n::get("download_tips_2"),
-            info(data::PRODUCT_PAGE)
+            info(data::product_download_url())
         );
     }
     install_path
