@@ -12,9 +12,9 @@ mod version;
 
 #[cfg(test)]
 mod tests {
-  use crate::data::{send_msg_replace, toolbar_cb_replace, toolbar_replace};
+    use crate::data::{send_msg_replace, toolbar_cb_replace, toolbar_replace};
 
-  #[test]
+    #[test]
     fn it_works() {
         let send_msg_ori = "t.handSendMsg=async function(e,t,a,n){";
         let editor_toolbar = "{type:\"CodeBlockBtn\",toolItemTestid:\"CodeBlockBtn000123\",title:window.language.CODEBLCOK,width:20,height:20,fill:\"#666\",hide:!1,isShow:!0}]";

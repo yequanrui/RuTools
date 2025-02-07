@@ -1,6 +1,6 @@
 use console_utils::input::select;
 use rt_helper::common::{
-  compare_version, copy_res, end_tips, operation_tips, replace_str, wait_for_exit,
+    compare_version, copy_res, end_tips, operation_tips, replace_str, wait_for_exit,
 };
 use rt_helper::console::{info, stdout, warning};
 use rt_helper::winapi::is_zh;
@@ -15,9 +15,9 @@ mod i18n;
 
 #[cfg(test)]
 mod tests {
-  use rt_helper::metadata::get_metadata;
+    use rt_helper::metadata::get_metadata;
 
-  #[test]
+    #[test]
     fn it_works() {
         println!(
             "{}",

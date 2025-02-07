@@ -23,10 +23,10 @@ charset = utf-8
 indent_style = space
 
 ## 缩进大小。当设置为tab时，会取tab_width的值。
-indent_size = 2
+indent_size = 4
 
 ## 通常不需要设置。当indent_size=tab时才会生效。
-tab_width = 2
+tab_width = 4
 
 ## 设置为lf、cr或crlf以控制如何表示换行符。
 end_of_line = lf

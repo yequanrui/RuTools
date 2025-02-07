@@ -1,4 +1,4 @@
-use crate::{common::create_file, i18n::get};
+use crate::{codec::decoder, common::create_file, i18n::get};
 use reqwest::{header::USER_AGENT, Client, Response};
 use serde_json::{Error, Value};
 use std::{fs::File, io::Write};
@@ -7,7 +7,7 @@ pub const OPENX_PROJECT_ID: &str = "3960";
 
 pub const OPENX_DOWNLOAD_PAGE: &str = "https://openx.huawei.com/WeTools/download";
 
-pub const OPENX_TOKEN: &str = "";
+pub const OPENX_TOKEN: &str = "NTEzZTBiMTEtZmUyOS00ZjMyLTk4Y2Yt";
 
 pub const OPENX_DOWN_URL: &str = "https://openx.huawei.com/openxApi/project/release_id/download1";
 
@@ -15,7 +15,7 @@ pub async fn get_by_openx(url: String) -> Result<Response, Error> {
     let client = Client::builder().no_proxy().build().unwrap();
     let resp = client
         .get(url)
-        .header("PRIVATE-TOKEN", OPENX_TOKEN)
+        .header("PRIVATE-TOKEN", decoder(OPENX_TOKEN))
         .send()
         .await
         .unwrap_or_else(|_| panic!("{}", get("request_failed")));

@@ -1,5 +1,5 @@
 use winapi::um::winnls::{
-  GetSystemDefaultLCID, GetSystemDefaultLangID, GetSystemDefaultUILanguage,
+    GetSystemDefaultLCID, GetSystemDefaultLangID, GetSystemDefaultUILanguage,
 };
 
 pub static ZH: &str = "2052";
