@@ -1,55 +1,55 @@
 {
-  "name": "rutools",
-  "productName": "RuTools",
-  "version": "1.0.0",
-  "description": "Tools written by Rust.",
-  "keywords": [
-    "welink",
-    "tools",
-    "style",
-    "themes",
-    "tauri",
-    "vite",
-    "vue",
-    "tiny"
-  ],
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview",
-    "tauri": "tauri"
-  },
-  "dependencies": {
-    "@opentiny/vue": "^3.21.2",
-    "@opentiny/vue-locale": "^3.21.0",
-    "@tauri-apps/api": "^2.2.0",
-    "@tauri-apps/plugin-autostart": "~2.2.0",
-    "@tauri-apps/plugin-opener": "^2.2.5",
-    "vue": "^3.5.13",
-    "vue-i18n": "^11.1.0",
-    "vue-router": "4.5.0"
-  },
-  "devDependencies": {
-    "@opentiny/unplugin-tiny-vue": "^0.0.2",
-    "@tauri-apps/cli": "^2.2.7",
-    "@vitejs/plugin-vue": "^5.2.1",
-    "vite": "^6.0.11"
-  },
-  "packageManager": "pnpm@8.6.12",
-  "private": true,
-  "license": "MIT",
-  "author": {
-    "name": "yequanrui",
-    "email": "yequanrui@qq.com",
-    "url": "https://yequanrui.github.io"
-  },
-  "homepage": "https://yequanrui.github.io/RuTools",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/yequanrui/RuTools.git"
-  },
-  "bugs": {
-    "url": "https://github.com/yequanrui/RuTools/issues"
-  }
+    "name": "rutools",
+    "productName": "RuTools",
+    "version": "1.0.0",
+    "description": "Tools written by Rust.",
+    "keywords": [
+        "welink",
+        "tools",
+        "style",
+        "themes",
+        "tauri",
+        "vite",
+        "vue",
+        "tiny"
+    ],
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "preview": "vite preview",
+        "tauri": "tauri"
+    },
+    "dependencies": {
+        "@opentiny/vue": "^3.21.2",
+        "@opentiny/vue-locale": "^3.21.0",
+        "@tauri-apps/api": "^2.2.0",
+        "@tauri-apps/plugin-autostart": "~2.2.0",
+        "@tauri-apps/plugin-opener": "^2.2.5",
+        "vue": "^3.5.13",
+        "vue-i18n": "^11.1.0",
+        "vue-router": "4.5.0"
+    },
+    "devDependencies": {
+        "@opentiny/unplugin-tiny-vue": "^0.0.2",
+        "@tauri-apps/cli": "^2.2.7",
+        "@vitejs/plugin-vue": "^5.2.1",
+        "vite": "^6.0.11"
+    },
+    "packageManager": "pnpm@8.6.12",
+    "private": true,
+    "license": "MIT",
+    "author": {
+        "name": "yequanrui",
+        "email": "yequanrui@qq.com",
+        "url": "https://yequanrui.github.io"
+    },
+    "homepage": "https://yequanrui.github.io/RuTools",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/yequanrui/RuTools.git"
+    },
+    "bugs": {
+        "url": "https://github.com/yequanrui/RuTools/issues"
+    }
 }
