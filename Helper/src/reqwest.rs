@@ -7,7 +7,7 @@ pub const OPENX_PROJECT_ID: &str = "3960";
 
 pub const OPENX_DOWNLOAD_PAGE: &str = "https://openx.huawei.com/WeTools/download";
 
-pub const OPENX_TOKEN: &str = "NTEzZTBiMTEtZmUyOS00ZjMyLTk4Y2Yt";
+pub const OPENX_TOKEN: &str = "NTEzZTBiMTEtZmUyOS00ZjMyLTk4Y2YtMmFkNTZhZmM0NmI0";
 
 pub const OPENX_DOWN_URL: &str = "https://openx.huawei.com/openxApi/project/release_id/download1";
 

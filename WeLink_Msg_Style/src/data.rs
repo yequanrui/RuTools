@@ -19,7 +19,7 @@ pub fn msg_style_help() -> &'static str {
     if is_internal_version() {
         "https://welink-themes.openx.huawei.com/welink/styleMsg/"
     } else {
-        "https:yequanrui.github.io/WeTools/styleMsg/"
+        "https://yequanrui.github.io/WeTools/styleMsg/"
     }
 }
 
