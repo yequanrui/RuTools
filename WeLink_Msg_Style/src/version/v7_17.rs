@@ -44,5 +44,5 @@ pub fn main(install_path: String, install_version: String, is_install: bool) {
         &toolbar_icon_replace(),
         &install_version,
         is_install,
-    )
+    );
 }

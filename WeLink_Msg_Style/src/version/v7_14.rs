@@ -27,7 +27,7 @@ pub fn main(install_path: String, install_version: String, is_install: bool) {
         is_install,
     );
     // 替换菜单逻辑
-    let editor_toolbar = "{type:\"WeTask\",toolItemTestid:\"WeTask000123\",title:window.language.WE_TASK_TASK,width:20,height:20,fill:\"#666\",hide:!1,isShow:!O&&window.isRedblue,submenuContentInMore:c.default.createElement(E.default,{close:()=>e.open&&e.open(!1)},clickItem:e=>{var t,l;return a.clickToolBar((0,u.default)(t=(0,default)(l=\"\".concat(N.MessageToolsUtInfo.CONSTANT.MORE,\"-\")).call(l,N.MessageToolsUtInfo.CONSTANT.TASK,\"-\")).call(t,e))}})}]";
+    let editor_toolbar = "{type:\"WeTask\",toolItemTestid:\"WeTask000123\",title:window.language.WE_TASK_TASK,width:20,height:20,fill:\"#666\",hide:!1,isShow:!O&&window.isRedblue,submenuContentInMore:c.default.createElement(E.default,{close:()=>{e.open&&e.open(!1)},clickItem:e=>{var t,l;return a.clickToolBar((0,u.default)(t=(0,u.default)(l=\"\".concat(N.MessageToolsUtInfo.CONSTANT.MORE,\"-\")).call(l,N.MessageToolsUtInfo.CONSTANT.TASK,\"-\")).call(t,e))}})}]";
     let editor_toolbar_new = editor_toolbar.replace("]", &toolbar_replace());
     let editor_toolbar_cb = "l=>{switch(l.type){";
     let editor_toolbar_cb_new = toolbar_cb_replace("l", "e");
@@ -74,5 +74,5 @@ pub fn main(install_path: String, install_version: String, is_install: bool) {
         &toolbar_icon_replace(),
         &install_version,
         is_install,
-    )
+    );
 }
