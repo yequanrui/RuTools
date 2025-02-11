@@ -1,12 +1,11 @@
+use crate::console::{error, info, success, warning};
+use crate::i18n::get;
 use std::fs::{copy, create_dir_all, metadata, read_dir, read_to_string, remove_file, write, File};
 use std::io::{stdin, BufRead, ErrorKind, Result};
 use std::path::Path;
 use std::process::{exit, Command};
 use std::thread::sleep;
 use std::time::Duration;
-
-use crate::console::{error, info, success, warning};
-use crate::i18n::get;
 
 /// 控制台暂停，等待用户按下Enter键
 pub fn pause() {

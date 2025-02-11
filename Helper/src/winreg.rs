@@ -1,8 +1,7 @@
-use winreg::enums::{HKEY_CURRENT_USER, HKEY_LOCAL_MACHINE, KEY_READ};
-use winreg::RegKey;
-
 use crate::console::warning;
 use crate::i18n::get;
+use winreg::enums::{HKEY_CURRENT_USER, HKEY_LOCAL_MACHINE, KEY_READ};
+use winreg::RegKey;
 
 /**
  * 通过注册表查询软件的安装版本和路径
