@@ -9,3 +9,4 @@ pub mod v7_18;
 pub mod v7_19;
 /// 蓝We支持的版本
 pub mod v7_48;
+pub mod v7_49;

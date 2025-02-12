@@ -7,17 +7,7 @@ pub fn main(install_path: String, install_version: String, is_install: bool) {
     let send_msg_new = send_msg_replace(send_msg_ori);
     let mut replace_arr = vec![vec![send_msg_ori, &send_msg_new]];
     let mut file_path = format!(
-        r"{}\resources\app\pedestal\im\static\js\common.js",
-        install_path
-    );
-    replace_str_list(
-        &file_path,
-        replace_arr.clone(),
-        &install_version,
-        is_install,
-    );
-    file_path = format!(
-        r"{}\resources\app\plugin\im\dist\im\static\js\common.js",
+        r"{}\resources\app\plugin\im\dist\static\js\common.js",
         install_path
     );
     replace_str_list(
@@ -36,7 +26,7 @@ pub fn main(install_path: String, install_version: String, is_install: bool) {
         vec![editor_toolbar_cb, &editor_toolbar_cb_new],
     ];
     file_path = format!(
-        r"{}\resources\app\pedestal\im\static\js\2473.js",
+        r"{}\resources\app\plugin\im\dist\static\js\8333.js",
         install_path
     );
     replace_str_list(
@@ -46,27 +36,7 @@ pub fn main(install_path: String, install_version: String, is_install: bool) {
         is_install,
     );
     file_path = format!(
-        r"{}\resources\app\plugin\im\dist\im\static\js\2473.js",
-        install_path
-    );
-    replace_str_list(
-        &file_path,
-        replace_arr.clone(),
-        &install_version,
-        is_install,
-    );
-    file_path = format!(
-        r"{}\resources\app\pedestal\im\static\css\2473.css",
-        install_path
-    );
-    push_str(
-        &file_path,
-        &toolbar_icon_replace(),
-        &install_version,
-        is_install,
-    );
-    file_path = format!(
-        r"{}\resources\app\plugin\im\dist\im\static\css\2473.css",
+        r"{}\resources\app\plugin\im\dist\static\css\8333.css",
         install_path
     );
     push_str(
