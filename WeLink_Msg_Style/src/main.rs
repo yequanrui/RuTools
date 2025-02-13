@@ -37,15 +37,15 @@ fn main() -> Result<(), Box<dyn Error>> {
         compatible_versions.insert("7.12.7", version::v7_12::main);
         compatible_versions.insert("7.13.12", version::v7_13::main);
         compatible_versions.insert("7.14.8", version::v7_14::main);
-        compatible_versions.insert("7.15.8", version::v7_15_16::main);
-        compatible_versions.insert("7.16.8", version::v7_15_16::main);
-        compatible_versions.insert("7.17.16", version::v7_17::main);
+        compatible_versions.insert("7.15.8", version::v7_15_16_48::main);
+        compatible_versions.insert("7.16.8", version::v7_15_16_48::main);
+        compatible_versions.insert("7.17.16", version::v7_17_49::main);
         compatible_versions.insert("7.18.7", version::v7_18::main);
-        compatible_versions.insert("7.19.1", version::v7_19::main);
+        compatible_versions.insert("7.19.3", version::v7_19::main);
     } else {
         // 仅蓝We使用
-        compatible_versions.insert("7.48.6", version::v7_48::main);
-        compatible_versions.insert("7.49.6", version::v7_49::main);
+        compatible_versions.insert("7.48.6", version::v7_15_16_48::main);
+        compatible_versions.insert("7.49.6", version::v7_17_49::main);
     }
     let keys: Vec<&str> = compatible_versions.clone().into_keys().collect();
     println!(
