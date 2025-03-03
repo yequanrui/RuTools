@@ -87,7 +87,11 @@ fn install_community(install_path: String) {
                 Some(appdata) => {
                     if let Some(appdata_str) = appdata.to_str() {
                         let mut path2 = PathBuf::from(appdata_str);
-                        path2.push(find_user_data_path("WeLink_Desktop_Data", "UserDataRoot"));
+                        path2.push(find_user_data_path(
+                            "WeLink_Desktop_Data",
+                            "UserDataRoot",
+                            env!("PRODUCT_NAME"),
+                        ));
                         path2.push("themeConfig");
                         path2.set_extension("json");
                         path1.pop();
@@ -119,7 +123,11 @@ fn uninstall_community() {
         Some(appdata) => {
             if let Some(appdata_str) = appdata.to_str() {
                 let mut path = PathBuf::from(appdata_str);
-                path.push(find_user_data_path("WeLink_Desktop_Data", "UserDataRoot"));
+                path.push(find_user_data_path(
+                    "WeLink_Desktop_Data",
+                    "UserDataRoot",
+                    env!("PRODUCT_NAME"),
+                ));
                 path.push("themeConfig");
                 path.set_extension("json");
                 if metadata(&path).is_ok() {

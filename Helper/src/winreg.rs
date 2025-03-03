@@ -47,10 +47,16 @@ pub fn find_install_path_and_version(software_name: &str) -> (String, String) {
 }
 
 /// 通过注册表查询软件的用户数据路径
-pub fn find_user_data_path(path_str: &str, data_name: &str) -> String {
+pub fn find_user_data_path(path_str: &str, data_name: &str, default_value: &str) -> String {
     let hkcu = RegKey::predef(HKEY_CURRENT_USER);
     let path = format!("Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\{path_str}");
-    let data = hkcu.open_subkey(path).unwrap();
-    let value = data.get_value(data_name);
-    value.unwrap_or_else(|_| panic!("Warning: {}", get("notfound_tips_3")))
+    if let Ok(data) = hkcu.open_subkey(path) {
+        if let Ok(value) = data.get_value::<String, &str>(data_name) {
+            value
+        } else {
+            default_value.to_string()
+        }
+    } else {
+        default_value.to_string()
+    }
 }

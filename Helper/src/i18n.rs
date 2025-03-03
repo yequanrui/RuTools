@@ -17,7 +17,6 @@ pub fn get_data(key: &str) -> [&str; 2] {
         "update_tips_3" => ["It's the latest version.", "已经是最新版本"],
         "notfound_tips_1" => ["The installation path of ", "没找到"],
         "notfound_tips_2" => [" is not found.", "的安装路径"],
-        "notfound_tips_3" => ["The root directory name of the user data is not found.", "没找到用户数据的根目录名"],
         "compare_version_tips_1" => ["Compare with the target version, ", "与目标版本"],
         "compare_version_tips_2" => ["it's a perfect match and can be used properly", "完全匹配，可正常使用"],
         "compare_version_tips_3" => ["there is a minor version difference and can ignore and use normally", "有小版本差异，可忽略并正常使用"],
