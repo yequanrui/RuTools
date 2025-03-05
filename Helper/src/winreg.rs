@@ -22,7 +22,7 @@ pub fn find_install_path_and_version(software_name: &str) -> (String, String) {
             .unwrap();
         let display_name: String = subkey.get_value("DisplayName").unwrap_or_default();
         let old_software_name = software_name.to_owned().replace("_", " ");
-        if display_name.contains(software_name) || display_name.contains(&old_software_name) {
+        if display_name.eq(software_name) || display_name.eq(&old_software_name) {
             let install_path = subkey.get_value("InstallLocation");
             let display_version = subkey.get_value("DisplayVersion");
             return (
