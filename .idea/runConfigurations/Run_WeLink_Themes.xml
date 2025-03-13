@@ -1,7 +1,7 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="Run WeLink_Themes" type="CargoCommandRunConfiguration" factoryName="Cargo Command">
     <option name="buildProfileId" value="release" />
-    <option name="command" value="run" />
+    <option name="command" value="run --package welink_themes --bin welink_themes" />
     <option name="workingDirectory" value="file://$PROJECT_DIR$/WeLink_Themes" />
     <envs />
     <option name="emulateTerminal" value="true" />

@@ -1,30 +1,33 @@
 [package]
-name = "welink_msg_style"
-version = "1.1.9"
+name = "welink_themes_blue"
+version = "1.0.9"
 authors = ["yequanrui <yequanrui@qq.com>"]
 edition = "2021"
-description = "WeLink Msg Style Installer"
+description = "WeLink Themes Installer"
 documentation = "https://yequanrui.github.io/WeTools/guides/"
 homepage = "https://yequanrui.github.io/WeTools/"
 repository = "https://github.com/yequanrui/RuTools"
-keywords = ["WeLink", "Message", "Style"]
+keywords = ["WeLink", "Theme"]
 categories = ["command-line-utilities"]
-build = "src/build.rs"
+build = "../src/build.rs"
+
+[[bin]]
+name = "welink_themes_blue"
+path = "../src/main.rs"
 
 [package.metadata.winres]
-OriginalFilename = "welink_msg_style.exe"
-FileDescription = "WeLink Msg Style Installer"
+OriginalFilename = "welink_themes_blue.exe"
+FileDescription = "WeLink Themes Installer"
 ProductName = "WeLink"
 ProductVersion = "7.50.3"
 LegalCopyright = "Copyright (c) 2019-2025. Huawei Technologies Co., Ltd. All Rights Reserved."
 
 [dependencies]
 console-utils = "1.6"
-rt_helper = { path = "../Helper" }
-tokio = { version = "1", features = ["full"] }
+rt_helper = { path = "../../Helper" }
 
 [target.'cfg(windows)'.build-dependencies]
-rt_helper = { path = "../Helper" }
+rt_helper = { path = "../../Helper" }
 winres = "0.1"
 
 [profile.release]

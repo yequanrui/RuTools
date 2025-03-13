@@ -1,6 +1,6 @@
 [package]
 name = "welink_themes"
-version = "1.0.8"
+version = "1.0.9"
 authors = ["yequanrui <yequanrui@qq.com>"]
 edition = "2021"
 description = "WeLink Themes Installer"
