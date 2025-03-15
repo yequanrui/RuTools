@@ -1,52 +1,33 @@
 [package]
-name = "welink_msg_style"
-version = "1.1.9"
+name = "welink_msg_style_blue"
+version = { workspace = true }
+edition = { workspace = true }
+license = { workspace = true }
+description = { workspace = true }
 authors = ["yequanrui <yequanrui@qq.com>"]
-edition = "2021"
-description = "WeLink Msg Style Installer"
-documentation = "https://yequanrui.github.io/WeTools/guides/"
-homepage = "https://yequanrui.github.io/WeTools/"
+documentation = "https://yequanrui.github.io/WeTools/welink/msg_style"
+homepage = "https://yequanrui.github.io/WeTools"
 repository = "https://github.com/yequanrui/RuTools"
-keywords = ["WeLink", "Message", "Style"]
-categories = ["command-line-utilities"]
-build = "src/build.rs"
+keywords = { workspace = true }
+categories = { workspace = true }
+build = "../src/build.rs"
+
+[[bin]]
+name = "welink_msg_style_blue"
+path = "../src/main.rs"
 
 [package.metadata.winres]
-OriginalFilename = "welink_msg_style.exe"
+OriginalFilename = "welink_msg_style_blue.exe"
 FileDescription = "WeLink Msg Style Installer"
 ProductName = "WeLink"
 ProductVersion = "7.50.3"
 LegalCopyright = "Copyright (c) 2019-2025. Huawei Technologies Co., Ltd. All Rights Reserved."
 
 [dependencies]
-console-utils = "1.6"
-rt_helper = { path = "../Helper" }
-tokio = { version = "1", features = ["full"] }
+console-utils = { workspace = true }
+rt_helper = { workspace = true }
+tokio = { workspace = true }
 
 [target.'cfg(windows)'.build-dependencies]
-rt_helper = { path = "../Helper" }
+rt_helper = { path = "../../Helper" }
 winres = "0.1"
-
-[profile.release]
-opt-level = "s" # 指定编译器优化的级别
-# 0：不优化，编译速度最快
-# 1：优化编译速度
-# 2：平衡优化速度和运行时性能（默认）
-# 3：最大优化运行时性能
-# "s"：优化代码尺寸
-# "z"：进一步优化代码尺寸，比"s"更激进
-lto = "fat" # 启用链接时优化（Link Time Optimization，LTO）
-# false：不启用LTO（默认）
-# true：启用LTO
-# "thin"：启用Thin LTO
-# "fat"：启用最大程度的LTO
-codegen-units = 1 # 指定编译器生成的代码单元数量
-# 默认值通常是16，设为1可以最大化优化
-panic = "abort" # 指定程序在发生panic时的行为
-# "unwind"：展开栈（默认）
-# "abort"：直接中止
-strip = "symbols" # 指定是否移除的调试信息和符号
-# "none"：不移除任何信息（默认）
-# "debuginfo"：移除调试信息
-# "symbols"：移除符号表，但保留必要的信息用于调试
-# "all"：移除所有可选的信息，包括调试信息和符号表
