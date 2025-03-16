@@ -17,10 +17,10 @@ async function greet() {
 
         <div class="row">
             <a href="https://vitejs.dev" target="_blank">
-                <img alt="Vite logo" class="logo vite" src="/vite.svg"/>
+                <img alt="Vite logo" class="logo vite" src="./assets/vite.svg"/>
             </a>
             <a href="https://tauri.app" target="_blank">
-                <img alt="Tauri logo" class="logo tauri" src="/tauri.svg"/>
+                <img alt="Tauri logo" class="logo tauri" src="./assets/tauri.svg"/>
             </a>
             <a href="https://vuejs.org/" target="_blank">
                 <img alt="Vue logo" class="logo vue" src="./assets/vue.svg"/>
@@ -44,7 +44,6 @@ async function greet() {
 .logo.vue:hover {
     filter: drop-shadow(0 0 2em #249b73);
 }
-
 </style>
 <style>
 :root {
@@ -52,15 +51,34 @@ async function greet() {
     font-size: 16px;
     line-height: 24px;
     font-weight: 400;
-
     color: #0f0f0f;
     background-color: #f6f6f6;
-
     font-synthesis: none;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     -webkit-text-size-adjust: 100%;
+}
+
+body {
+    margin: 0;
+}
+
+#app::after {
+    content: "";
+    width: 100vw;
+    height: 100vh;
+    background-image: url("./assets/bg.svg");
+    background-size: cover;
+    background-position: center;
+    filter: blur(1px);
+    opacity: .1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
 }
 
 .container {
@@ -158,5 +176,4 @@ button {
         background-color: #0f0f0f69;
     }
 }
-
 </style>
