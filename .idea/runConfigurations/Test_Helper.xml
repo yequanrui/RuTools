@@ -1,5 +1,6 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="Test Helper" type="CargoCommandRunConfiguration" factoryName="Cargo Command">
+    <option name="buildProfileId" value="test" />
     <option name="command" value="test --package rt_helper --lib tests" />
     <option name="workingDirectory" value="file://$PROJECT_DIR$/Helper" />
     <envs />
