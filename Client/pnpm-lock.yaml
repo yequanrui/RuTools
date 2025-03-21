@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@opentiny/vue':
-    specifier: ^3.21.2
-    version: 3.21.2(echarts@5.6.0)
+    specifier: ^3.21.3
+    version: 3.21.3(echarts@5.6.0)
   '@opentiny/vue-locale':
     specifier: ^3.21.0
     version: 3.21.0
@@ -2876,8 +2876,8 @@ packages:
       '@opentiny/vue-theme': 3.21.2
     dev: false
 
-  /@opentiny/vue@3.21.2(echarts@5.6.0):
-    resolution: {integrity: sha512-WKi0M1/LUo/ZMGVT45N8IihWzetGmMiyckWuEmFxwyt9KEk3mGXZjn91GLzZElnFXkbe0Zp+nApMEX1EM1CRBQ==}
+  /@opentiny/vue@3.21.3(echarts@5.6.0):
+    resolution: {integrity: sha512-WekaOI8HN/uZvJqFwj3e9FgcopYRQPLZdFTFxt75cDOi3U3zslWuMmz9UTZppPjncQRwQkW28dup5CuxhfkuZQ==}
     dependencies:
       '@opentiny/vue-action-menu': 3.21.0
       '@opentiny/vue-action-sheet': 3.21.0
