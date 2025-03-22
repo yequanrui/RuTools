@@ -2,8 +2,8 @@ use winapi::um::winnls::{
     GetSystemDefaultLCID, GetSystemDefaultLangID, GetSystemDefaultUILanguage,
 };
 
-pub static ZH: &str = "2052";
-pub static EN: &str = "1033";
+pub static ZH: &'static str = "2052";
+pub static EN: &'static str = "1033";
 
 pub fn is_zh() -> bool {
     lang_id() == *ZH

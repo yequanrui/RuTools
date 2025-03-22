@@ -13,11 +13,7 @@ pub fn get(key: &str) -> &str {
         "no_config_tips_2" => ["", "版本的替换配置"],
         _ => get_data(key),
     };
-    if is_zh() {
-        res[1]
-    } else {
-        res[0]
-    }
+    res[if is_zh() { 1 } else { 0 }]
 }
 
 pub fn get_by_lang(key: &str) -> String {

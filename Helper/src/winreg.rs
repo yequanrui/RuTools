@@ -10,18 +10,16 @@ pub fn find_install_path_and_version(software_name: &str) -> (String, String) {
     let hklm = RegKey::predef(HKEY_LOCAL_MACHINE);
     let software_key = hklm.open_subkey_with_flags("SOFTWARE", KEY_READ).unwrap();
     // 寻找安装路径
+    let uninstall_path = "WOW6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall";
     let uninstall_key = software_key
-        .open_subkey_with_flags(
-            "WOW6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall",
-            KEY_READ,
-        )
+        .open_subkey_with_flags(uninstall_path, KEY_READ)
         .unwrap();
+    let old_software_name = software_name.to_owned().replace("_", " ");
     for subkey_name in uninstall_key.enum_keys().map(|k| k.unwrap()) {
         let subkey = uninstall_key
             .open_subkey_with_flags(subkey_name, KEY_READ)
             .unwrap();
         let display_name: String = subkey.get_value("DisplayName").unwrap_or_default();
-        let old_software_name = software_name.to_owned().replace("_", " ");
         if display_name.eq(software_name) || display_name.eq(&old_software_name) {
             let install_path = subkey.get_value("InstallLocation");
             let display_version = subkey.get_value("DisplayVersion");
@@ -50,13 +48,7 @@ pub fn find_install_path_and_version(software_name: &str) -> (String, String) {
 pub fn find_user_data_path(path_str: &str, data_name: &str, default_value: &str) -> String {
     let hkcu = RegKey::predef(HKEY_CURRENT_USER);
     let path = format!("Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\{path_str}");
-    if let Ok(data) = hkcu.open_subkey(path) {
-        if let Ok(value) = data.get_value::<String, &str>(data_name) {
-            value
-        } else {
-            default_value.to_string()
-        }
-    } else {
-        default_value.to_string()
-    }
+    hkcu.open_subkey(path)
+        .and_then(|data| data.get_value::<String, &str>(data_name))
+        .unwrap_or_else(|_| default_value.to_string())
 }

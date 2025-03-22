@@ -67,10 +67,5 @@ pub fn get_data(key: &str) -> [&str; 2] {
 }
 
 pub fn get(key: &str) -> &str {
-    let res = get_data(key);
-    if is_zh() {
-        res[1]
-    } else {
-        res[0]
-    }
+    get_data(key)[if is_zh() { 1 } else { 0 }]
 }

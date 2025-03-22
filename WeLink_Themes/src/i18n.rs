@@ -33,9 +33,5 @@ pub fn get(key: &str) -> &str {
         "no_dir_tips" => ["Error getting current directory", "获取当前目录时出错"],
         _ => get_data(key),
     };
-    if is_zh() {
-        res[1]
-    } else {
-        res[0]
-    }
+    res[if is_zh() { 1 } else { 0 }]
 }

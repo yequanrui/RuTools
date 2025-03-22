@@ -113,5 +113,9 @@ pub fn assets_list() -> Vec<&'static str> {
             "plugin/feedback/dist/feedback.html",
         ]
     };
-    common_list.into_iter().chain(spec_list).collect()
+    common_list
+        .iter()
+        .chain(spec_list.iter())
+        .cloned()
+        .collect()
 }
