@@ -1,6 +1,7 @@
 use console_utils::input::select;
 use rt_helper::common::{
-    compare_version, copy_res, end_tips, operation_tips, replace_str, wait_for_exit,
+    compare_version, copy_res, end_tips, is_internal_version, operation_tips, replace_str,
+    wait_for_exit,
 };
 use rt_helper::console::{info, stdout, warning};
 use rt_helper::winapi::is_zh;
@@ -29,7 +30,7 @@ mod tests {
 fn main() -> Result<(), Box<dyn Error>> {
     let install_path = preset();
 
-    if data::is_internal_version() {
+    if is_internal_version(env!("PRODUCT_NAME")) {
         // 仅红We（内部版本）使用
         let options = [
             i18n::get("community_theme"),

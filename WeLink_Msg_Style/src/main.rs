@@ -1,5 +1,7 @@
 use console_utils::input::select;
-use rt_helper::common::{end_tips, judge_version, open_url, operation_tips, wait_for_exit};
+use rt_helper::common::{
+    end_tips, is_internal_version, judge_version, open_url, operation_tips, wait_for_exit,
+};
 use rt_helper::console::{info, stdout, warning};
 use rt_helper::reqwest::{get_latest_package_ids, OPENX_DOWNLOAD_PAGE, OPENX_PROJECT_ID};
 use rt_helper::winreg::find_install_path_and_version;
@@ -31,7 +33,7 @@ fn main() -> Result<(), Box<dyn Error>> {
     let (install_path, install_version) = preset();
     // 使用BTreeMap可以保持键的插入顺序
     let mut compatible_versions: BTreeMap<&str, fn(String, String, bool)> = BTreeMap::new();
-    if data::is_internal_version() {
+    if is_internal_version(env!("PRODUCT_NAME")) {
         // 仅红We（内部版本）使用
         compatible_versions.insert("7.11.3", version::v7_11::main);
         compatible_versions.insert("7.12.7", version::v7_12::main);
@@ -125,7 +127,7 @@ fn preset() -> (String, String) {
         info(&install_path)
     );
     // 检查安装程序是否有最新版本
-    if data::is_internal_version() {
+    if is_internal_version(env!("PRODUCT_NAME")) {
         tokio::runtime::Runtime::new().unwrap().block_on(async {
             let package = get_latest_package_ids(OPENX_PROJECT_ID, env!("CARGO_PKG_NAME"))
                 .await

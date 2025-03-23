@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Logo</title>
+    <style>
+        body {
+            height: 100vh;
+            margin: 0;
+        }
+
+        ul {
+            position: relative;
+            margin: 0 auto;
+            padding: 0;
+            width: 300px;
+            height: 300px;
+            list-style-type: none;
+        }
+
+        li {
+            position: absolute;
+            top: 32px;
+            left: 90px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 150px;
+            height: 200px;
+            border-radius: 16px;
+            font-size: 5em;
+            font-weight: bold;
+            color: #fafafa;
+            user-select: none;
+            animation-duration: 6s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+            animation-play-state: paused;
+        }
+
+        li:nth-of-type(1) {
+            background-color: #ffa726;
+            transform: rotate(-72deg) translate(-50px, -6px);
+        }
+
+        li:nth-of-type(2) {
+            background-color: #ef5350;
+            transform: rotate(-48deg) translate(-33px, 3px);
+            animation-name: animation1;
+        }
+
+        li:nth-of-type(3) {
+            background-color: #66bb6a;
+            transform: rotate(-24deg) translate(-16px, 5px);
+            animation-name: animation2;
+        }
+
+        li:nth-of-type(4) {
+            background-color: #42a4f4;
+            animation-name: animation3;
+        }
+
+        @keyframes animation1 {
+            0% {
+                transform: rotate(-48deg) translate(-33px, 3px);
+            }
+            16.6% {
+                transform: rotate(-48deg) translate(-33px, 3px);
+            }
+            33.3% {
+                transform: rotate(-48deg) translate(-33px, 3px);
+            }
+            50% {
+                transform: rotate(-72deg) translate(-50px, -6px);
+            }
+            66.6% {
+                transform: rotate(-48deg) translate(-33px, 3px);
+            }
+            83.3% {
+                transform: rotate(-48deg) translate(-33px, 3px);
+            }
+            100% {
+                transform: rotate(-48deg) translate(-33px, 3px);
+            }
+        }
+
+        @keyframes animation2 {
+            0% {
+                transform: rotate(-24deg) translate(-16px, 5px);
+            }
+            16.6% {
+                transform: rotate(-24deg) translate(-16px, 5px);
+            }
+            33.3% {
+                transform: rotate(-48deg) translate(-33px, 3px);
+            }
+            50% {
+                transform: rotate(-72deg) translate(-50px, -6px);
+            }
+            66.6% {
+                transform: rotate(-48deg) translate(-33px, 3px);
+            }
+            83.3% {
+                transform: rotate(-24deg) translate(-16px, 5px);
+            }
+            100% {
+                transform: rotate(-24deg) translate(-16px, 5px);
+            }
+        }
+
+        @keyframes animation3 {
+            0% {
+            }
+            16.6% {
+                transform: rotate(-24deg) translate(-16px, 5px);
+            }
+            33.3% {
+                transform: rotate(-48deg) translate(-33px, 3px);
+            }
+            50% {
+                transform: rotate(-72deg) translate(-50px, -6px);
+            }
+            66.6% {
+                transform: rotate(-48deg) translate(-33px, 3px);
+            }
+            83.3% {
+                transform: rotate(-24deg) translate(-16px, 5px);
+            }
+            100% {
+            }
+        }
+
+        .control {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li>✔</li>
+    <li>✔</li>
+    <li>✔</li>
+    <li>✔</li>
+</ul>
+<div class="control">
+    <button onclick="playAnimation()">播放</button>
+    <button onclick="pauseAnimation()">暂停</button>
+    <button onclick="stepForward()">下一帧</button>
+</div>
+<script>
+    const cards = document.querySelectorAll("li");
+    let animationPaused = true;
+
+    function playAnimation() {
+        animationPaused = false;
+        cards.forEach((card) => {
+            card.style.animationPlayState = "running";
+        });
+    }
+
+    function pauseAnimation() {
+        animationPaused = true;
+        cards.forEach((card) => {
+            card.style.animationPlayState = "paused";
+        });
+    }
+
+    function stepForward() {
+        if (animationPaused) {
+            cards.forEach((card) => {
+                const currentTime = parseFloat(
+                    card.style.animationDelay || 0
+                );
+                card.style.animationDelay = `${currentTime - 1}s`;
+            });
+        }
+    }
+</script>
+</body>
+</html>

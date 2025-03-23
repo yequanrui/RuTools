@@ -321,3 +321,8 @@ pub fn judge_version(origin_version: &str, target_version: &str) -> bool {
         target_ints[0] > origin_ints[0]
     }
 }
+
+/// 是否内部版本
+pub fn is_internal_version(product_name: &str) -> bool {
+    product_name == "WeLink_Desktop"
+}

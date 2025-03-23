@@ -1,6 +1,8 @@
+use rt_helper::common::is_internal_version;
+
 // 产品包下载链接
 pub fn product_download_url() -> &'static str {
-    if is_internal_version() {
+    if is_internal_version(env!("PRODUCT_NAME")) {
         "https://onebox.huawei.com/v/14893661f51ee0f762b9d1dffe8b5aa0/list#linkFolder/1/29"
     } else {
         "https://www.huaweicloud.com/product/welink-download.html"
@@ -10,11 +12,6 @@ pub fn product_download_url() -> &'static str {
 /// 获取主版本号
 pub fn product_major_version() -> String {
     format!("{}.x", env!("PRODUCT_VERSION").split('.').next().unwrap())
-}
-
-/// 是否内部版本
-pub fn is_internal_version() -> bool {
-    env!("PRODUCT_NAME") == "WeLink_Desktop"
 }
 
 /// html资源列表
@@ -77,7 +74,7 @@ pub fn assets_list() -> Vec<&'static str> {
         // 图片查看器
         "plugin/previewPicture/dist/index.html",
     ];
-    let spec_list = if is_internal_version() {
+    let spec_list = if is_internal_version(env!("PRODUCT_NAME")) {
         // 仅红We（内部版本）使用
         vec![
             // 聊天消息页面-小微助手侧滑框

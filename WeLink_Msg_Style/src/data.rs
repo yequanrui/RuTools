@@ -1,13 +1,9 @@
 use crate::i18n::get_by_lang;
-
-/// 是否内部版本
-pub fn is_internal_version() -> bool {
-    env!("PRODUCT_NAME") == "WeLink_Desktop"
-}
+use rt_helper::common::is_internal_version;
 
 /// 显眼包格式分享表格链接
 pub fn msg_style_table() -> &'static str {
-    if is_internal_version() {
+    if is_internal_version(env!("PRODUCT_NAME")) {
         "https://onebox.huawei.com/v/6a867afe371ad4ed775adbff18b7f5f5?type=0"
     } else {
         "https://kdocs.cn/l/cs7U6nzAF1GG"
@@ -16,7 +12,7 @@ pub fn msg_style_table() -> &'static str {
 
 /// 显眼包帮助文档链接
 pub fn msg_style_help() -> &'static str {
-    if is_internal_version() {
+    if is_internal_version(env!("PRODUCT_NAME")) {
         "https://welink-themes.openx.huawei.com/welink/styleMsg/"
     } else {
         "https://yequanrui.github.io/WeTools/styleMsg/"

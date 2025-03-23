@@ -1,5 +1,5 @@
 #[cfg(windows)]
-fn main() {
+fn main() -> Result<(), Box<dyn std::error::Error>> {
     // 设置元数据
     use rt_helper::metadata::get_metadata;
     let product_name = get_metadata(env!("CARGO_PKG_NAME"), "winres", "ProductName");
@@ -7,8 +7,7 @@ fn main() {
     let product_version = get_metadata(env!("CARGO_PKG_NAME"), "winres", "ProductVersion");
     println!("cargo:rustc-env=PRODUCT_VERSION={product_version}");
     // 设置图标资源
-    winres::WindowsResource::new()
-        .set_icon("../logo.ico")
-        .compile()
-        .expect("Failed to compile Windows resources");
+    let icon = format!("../assets/{}.ico", env!("CARGO_PKG_NAME"));
+    winres::WindowsResource::new().set_icon(&icon).compile()?;
+    Ok(())
 }
