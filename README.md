@@ -34,7 +34,7 @@
 1. 在`WeLink_Msg_Style/src/version`目录下新建一个要适配版本的rs脚本文件（注：一个脚本适配一个正式版本，故脚本名用正式版本命名，而适配的版本要完整的，用来判断。例如：脚本名`v7_17.rs`，适配版本`7.17.16`，如果当前版本配置与之前版本的一致，则重复使用配置，脚本名上体现，如`v7_17_49.rs`）
 2. 定义公共函数`main`（例如：`pub fn main(install_path: String, install_version: String, is_install: bool) {}`）
 3. 编写`main`函数代码，主要是`WeLink`源码替换的部分，具体可参考`v7_17.rs`，除此之外的公共代码基本不会动
-4. 在`WeLink_Msg_Style/src/main.rs`主脚本里的版本映射变量`compatible_versions`插入键值对（例如：`compatible_versions.insert("7.16.16", version::v7_17::main);`）
+4. 在`WeLink_Msg_Style/src/main.rs`主脚本里的版本映射变量`compatible_versions`插入键值对（例如：`compatible_versions.insert("7.17.16", version::v7_17::main);`）
 5. 修改`Cargo.toml`配置文件
     1. 红版WeLink配置：`WeLink_Msg_Style/WeLink_Desktop/Cargo.toml`
     2. 蓝版WeLink配置：`WeLink_Msg_Style/WeLink/Cargo.toml`
