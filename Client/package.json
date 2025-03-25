@@ -36,7 +36,7 @@
         "@vitejs/plugin-vue": "^5.2.1",
         "unplugin-auto-import": "^19.1.1",
         "unplugin-vue-components": "^28.4.1",
-        "vite": "^6.2.2"
+        "vite": "^6.2.3"
     },
     "packageManager": "pnpm@8.6.12",
     "private": true,
