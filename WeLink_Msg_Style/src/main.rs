@@ -44,12 +44,13 @@ fn main() -> Result<(), Box<dyn Error>> {
         compatible_versions.insert("7.17.16", version::v7_17_49::main);
         compatible_versions.insert("7.18.7", version::v7_18_19::main);
         compatible_versions.insert("7.19.6", version::v7_18_19::main);
-        compatible_versions.insert("7.20.6", version::v7_20_50::main);
+        compatible_versions.insert("7.20.6", version::v7_20_50_51::main);
     } else {
         // 仅蓝We使用
         compatible_versions.insert("7.48.6", version::v7_15_16_48::main);
         compatible_versions.insert("7.49.6", version::v7_17_49::main);
-        compatible_versions.insert("7.50.3", version::v7_20_50::main);
+        compatible_versions.insert("7.50.3", version::v7_20_50_51::main);
+        compatible_versions.insert("7.51.6", version::v7_20_50_51::main);
     }
     let keys: Vec<&str> = compatible_versions.clone().into_keys().collect();
     println!(

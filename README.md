@@ -4,30 +4,38 @@
 
 | 包名               | 描述（带*️⃣号的代码收录在本代码仓，带#️⃣号的是发布包收录）     | 最新版本                          |
 |:-----------------|:-------------------------------------|:------------------------------|
-| [WeLink]         | 华为云WeLink，数字化办公协作平台                  | [7.50.3.569][WeLink-Download] |
+| [WeLink]         | 华为云WeLink，数字化办公协作平台                  | [7.51.6.574][WeLink-Download] |
 | [MT]             | #️⃣微软SDK中用于生成签名文件和目录的工具，仅用于自动获取管理员权限 | 5.2.3790.2076                 |
 | Client           | *️⃣Tauri客户端                          | 1.0.0                         |
 | Helper           | *️⃣一些三方库的封装方法                        | 1.1.0                         |
 | WeLink_Themes    | *️⃣WeLink主题替换工具                      | 1.1.0                         |
 | WeLink_Msg_Style | *️⃣WeLink显眼包替换工具                     | 1.2.0                         |
 
-[MT]: https://learn.microsoft.com/zh-cn/windows/win32/sbscs/mt-exe "点击跳转"
+[MT]: https://learn.microsoft.com/zh-cn/windows/win32/sbscs/mt-exe '点击跳转'
 
-[WeLink]: https://www.huaweicloud.com/product/welink "点击跳转"
+[WeLink]: https://www.huaweicloud.com/product/welink '点击跳转'
 
-[WeLink-Download]: https://static.hc-cdn.com/installpkg/WeLink_setup.exe "点击跳转"
+[WeLink-Download]: https://static.hc-cdn.com/installpkg/WeLink_setup.exe '点击跳转'
 
 ## 如何使用
 
 - 发布包直接收录在代码库的，直接克隆仓库到本地即可使用
-- 代码收录在仓库的在可在仓库的[Release](https://github.com/yequanrui/RuTools/releases)中下载对应版本的发布包
+- 代码收录在仓库的在可在仓库的[发布页][Release]中下载对应版本的发布包
+
+[Release]: https://github.com/yequanrui/RuTools/releases '点击跳转'
 
 ## 如何反馈
 
-- 提交[Issue](https://github.com/yequanrui/RuTools/issues)
-- 联系[作者](mailto:yequanrui@qq.com)
+[提需求 / 问题][Issue] | [邮件联系作者][MailTo]
+
+[Issue]: https://github.com/yequanrui/RuTools/issues '点击跳转'
+
+[MailTo]: mailto:yequanrui@qq.com '点击发送邮件'
 
 ## 如何贡献
+
+- 开发工具: `JetBrains RustRover`
+- 开发语言：`Rust`
 
 ### WeLink_Msg_Style
 
