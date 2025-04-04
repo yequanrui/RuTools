@@ -11,7 +11,7 @@ keywords = ["WeLink", "Theme"]
 categories = ["command-line-utilities"]
 
 [workspace.dependencies]
-console-utils = "1.6"
+console-utils = "1.7"
 rt_helper = { path = "../Helper" }
 
 [profile.release]
