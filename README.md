@@ -2,14 +2,22 @@
 
 > Tools written by Rust.
 
-| 包名               | 描述（带*️⃣号的代码收录在本代码仓，带#️⃣号的是发布包收录）     | 最新版本                          |
-|:-----------------|:-------------------------------------|:------------------------------|
-| [WeLink]         | 华为云WeLink，数字化办公协作平台                  | [7.51.6.574][WeLink-Download] |
-| [MT]             | #️⃣微软SDK中用于生成签名文件和目录的工具，仅用于自动获取管理员权限 | 5.2.3790.2076                 |
-| Client           | *️⃣Tauri客户端                          | 1.0.0                         |
-| Helper           | *️⃣一些三方库的封装方法                        | 1.1.0                         |
-| WeLink_Themes    | *️⃣WeLink主题替换工具                      | 1.1.0                         |
-| WeLink_Msg_Style | *️⃣WeLink显眼包替换工具                     | 1.2.0                         |
+[更新日志][ChangeLog]
+
+[ChangeLog]: https://yequanrui.github.io/WeTools/welink/style-msg/changelog '点击跳转'
+
+## 项目介绍
+
+> 主要收录一些用于WeLink的工具集合
+
+| 包名               | 描述（带*️⃣号的代码收录在[本代码仓][Repository] ，带#️⃣号的是发布包收录） | 最新版本                          |
+|:-----------------|:------------------------------------------------|:------------------------------|
+| [WeLink]         | 华为云WeLink，数字化办公协作平台                             | [7.51.6.574][WeLink-Download] |
+| [MT]             | #️⃣微软SDK中用于生成签名文件和目录的工具，仅用于自动获取管理员权限            | 5.2.3790.2076                 |
+| Client           | *️⃣Tauri客户端                                     | 1.0.0                         |
+| Helper           | *️⃣一些三方库的封装方法                                   | 1.1.0                         |
+| WeLink_Themes    | *️⃣WeLink主题替换工具                                 | 1.1.0                         |
+| WeLink_Msg_Style | *️⃣WeLink显眼包替换工具                                | 1.2.0                         |
 
 [MT]: https://learn.microsoft.com/zh-cn/windows/win32/sbscs/mt-exe '点击跳转'
 
@@ -19,23 +27,29 @@
 
 ## 如何使用
 
-- 发布包直接收录在代码库的，直接克隆仓库到本地即可使用
+- 发布包直接收录在代码库的，直接克隆[本仓库][Repository]到本地即可使用
 - 代码收录在仓库的在可在仓库的[发布页][Release]中下载对应版本的发布包
+
+[Repository]: https://github.com/yequanrui/RuTools '点击跳转'
 
 [Release]: https://github.com/yequanrui/RuTools/releases '点击跳转'
 
 ## 如何反馈
 
-[提需求 / 问题][Issue] | [邮件联系作者][MailTo]
+[联系作者][Contacts] | [提需求Or缺陷][Issue]
+
+[Contacts]: mailto:yequanrui@qq.com '点击发送邮件'
 
 [Issue]: https://github.com/yequanrui/RuTools/issues '点击跳转'
 
-[MailTo]: mailto:yequanrui@qq.com '点击发送邮件'
-
 ## 如何贡献
 
-- 开发工具: `JetBrains RustRover`
-- 开发语言：`Rust`
+- 开发工具: [JetBrains RustRover](https://www.jetbrains.com/rust/)
+- 开发语言：[Rust](https://www.rust-lang.org/)
+
+### WeLink_Emoji
+
+1. *开发中*
 
 ### WeLink_Msg_Style
 
@@ -52,7 +66,7 @@
 
 ### WeLink_Themes
 
-1. 主题资源文件适配WeLink最新版本，资源文件在项目WeTools维护，与此项目建议在同级目录下共同维护，方便打包脚本将发布包同步复制到主题资源文件目录下，与主题一起打包发布
+1. 主题资源文件适配WeLink最新版本，资源文件在项目[WeTools][WT-Repository]维护，与此项目建议在同级目录下共同维护，方便打包脚本将发布包同步复制到主题资源文件目录下，与主题一起打包发布
 2. 修改`data.rs`，如果有新增适配的WeLink界面文件，在`assets_list()`方法中增加该界面文件的相对路径，例如`"plugin/im/dist/multiwindow.html",`，如果是红色WeLink独有的可移到`spec_list`变量的`if`块中，蓝版WeLink独有的可移到`spec_list`变量的`else`块中
 3. 修改`Cargo.toml`配置文件
     1. 红版WeLink配置：`WeLink_Themes/WeLink_Desktop/Cargo.toml`
@@ -60,3 +74,5 @@
     3. `version`值加1（逢10进1）
     4. `ProductVersion`值为适配的WeLink版本
 4. 控制台执行`.\build.bat`，编译打包成发布包，发布包在根目录下的`dist`目录
+
+[WT-Repository]: https://github.com/yequanrui/WeTools '点击跳转'

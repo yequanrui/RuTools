@@ -1,7 +1,7 @@
 #[cfg(windows)]
 fn main() -> Result<(), Box<dyn std::error::Error>> {
-    use rt_helper::metadata::get_metadata;
     // 设置元数据
+    use rt_helper::metadata::get_metadata;
     let product_name = get_metadata(env!("CARGO_PKG_NAME"), "winres", "ProductName");
     println!("cargo:rustc-env=PRODUCT_NAME={product_name}");
     // 设置图标资源
