@@ -13,9 +13,9 @@ pub fn msg_style_table() -> &'static str {
 /// 显眼包帮助文档链接
 pub fn msg_style_help() -> &'static str {
     if is_internal_version(env!("PRODUCT_NAME")) {
-        "https://welink-themes.openx.huawei.com/welink/styleMsg/"
+        "https://welink-themes.openx.huawei.com/welink/style-msg/"
     } else {
-        "https://yequanrui.github.io/WeTools/styleMsg/"
+        "https://yequanrui.github.io/WeTools/style-msg/"
     }
 }
 
@@ -38,7 +38,7 @@ pub const GET_CURRENT_ID: &str =
 /// 发送消息的代码
 pub fn send_msg_replace(replace_str: &str) -> String {
     let mut res = String::from(replace_str);
-    res.push_str("const wla=JSON.parse(localStorage.getItem('welink_msg_config://whitelist')||'[]'),bla=JSON.parse(localStorage.getItem('welink_msg_config://blacklist')||'[]');let sc=localStorage.getItem('welink_msg_config://style_config');if(!localStorage.getItem('welink_msg_config://feature_enable')||(wla.length&&!wla.includes(a))||(!wla.includes(a)&&bla.includes(a)))sc='';''===sc.trim()||''===e.trim()||e.includes('<')&&/<img [^>]*role=\"(picture|file)\"[^>]*>/gi.test(e)||(e=sc.replaceAll('{{ORI_CONTENT}}',e));");
+    res.push_str("const wla=JSON.parse(localStorage.getItem('welink_msg_config://whitelist')||'[]'),bla=JSON.parse(localStorage.getItem('welink_msg_config://blacklist')||'[]');let sc=localStorage.getItem('welink_msg_config://style_config');if(!localStorage.getItem('welink_msg_config://feature_enable')||(wla.length&&!wla.includes(a))||(!wla.includes(a)&&bla.includes(a)))sc='';''===sc.trim()||''===e.trim()||e.includes('<')&&/<img [^>]*role=\"(picture|file)\"[^>]*>/gi.test(e)||(e=sc.replaceAll('{{Date}}',new Date().toLocaleDateString()).replaceAll('{{Time}}',new Date().toLocaleTimeString()).replaceAll('{{DateTime}}',new Date().toLocaleString()).replaceAll('{{ORI_CONTENT}}',e));");
     res
 }
 

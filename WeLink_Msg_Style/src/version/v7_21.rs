@@ -26,7 +26,7 @@ pub fn main(install_path: String, install_version: String, is_install: bool) {
         vec![editor_toolbar_cb, &editor_toolbar_cb_new],
     ];
     file_path = format!(
-        r"{}\resources\app\plugin\im\dist\static\js\3479.js",
+        r"{}\resources\app\plugin\im\dist\static\js\5912.js",
         install_path
     );
     replace_str_list(
@@ -36,7 +36,7 @@ pub fn main(install_path: String, install_version: String, is_install: bool) {
         is_install,
     );
     file_path = format!(
-        r"{}\resources\app\plugin\im\dist\static\css\3479.css",
+        r"{}\resources\app\plugin\im\dist\static\css\5912.css",
         install_path
     );
     push_str(

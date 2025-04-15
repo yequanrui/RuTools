@@ -24,6 +24,7 @@ ProductVersion = "7.51.6"
 LegalCopyright = "Copyright (c) 2019-2025. Huawei Technologies Co., Ltd. All Rights Reserved."
 
 [dependencies]
+clap = { workspace = true }
 console-utils = { workspace = true }
 rt_helper = { workspace = true }
 tokio = { workspace = true }

@@ -28,7 +28,7 @@
 ## 如何使用
 
 - 发布包直接收录在代码库的，直接克隆[本仓库][Repository]到本地即可使用
-- 代码收录在仓库的在可在仓库的[发布页][Release]中下载对应版本的发布包
+- 代码收录在仓库的在可在项目的[发布页][Release]中下载对应版本的发布包
 
 [Repository]: https://github.com/yequanrui/RuTools '点击跳转'
 
@@ -45,7 +45,7 @@
 ## 如何贡献
 
 - 开发工具: [JetBrains RustRover](https://www.jetbrains.com/rust/)
-- 开发语言：[Rust](https://www.rust-lang.org/)
+- 开发语言: [Rust](https://www.rust-lang.org/)
 
 ### WeLink_Emoji
 

@@ -1,3 +1,4 @@
+use clap::{Args, Parser};
 use console_utils::input::select;
 use rt_helper::common::{
     end_tips, is_internal_version, judge_version, open_url, operation_tips, wait_for_exit,
@@ -6,11 +7,36 @@ use rt_helper::console::{info, stdout, warning};
 use rt_helper::reqwest::{get_latest_package_ids, OPENX_DOWNLOAD_PAGE, OPENX_PROJECT_ID};
 use rt_helper::winreg::find_install_path_and_version;
 use std::collections::BTreeMap;
+use std::env;
 use std::error::Error;
 
 mod data;
 mod i18n;
 mod version;
+
+#[derive(Parser, Debug)]
+#[command(version, about, long_about = None)]
+struct Cli {
+    /// 执行选项
+    #[command(flatten)]
+    options: Options,
+
+    /// 是否跳过版本检测
+    #[arg(short, long)]
+    skip: bool,
+}
+
+#[derive(Args, Debug)]
+#[group(required = false, multiple = false)]
+struct Options {
+    /// 安装/更新
+    #[arg(short, long)]
+    install: bool,
+
+    /// 卸载
+    #[arg(short, long)]
+    uninstall: bool,
+}
 
 #[cfg(test)]
 mod tests {
@@ -30,7 +56,8 @@ mod tests {
 }
 
 fn main() -> Result<(), Box<dyn Error>> {
-    let (install_path, install_version) = preset();
+    let args = Cli::parse();
+    let (install_path, install_version) = preset(args.skip);
     // 使用BTreeMap可以保持键的插入顺序
     let mut compatible_versions: BTreeMap<&str, fn(String, String, bool)> = BTreeMap::new();
     if is_internal_version(env!("PRODUCT_NAME")) {
@@ -45,7 +72,7 @@ fn main() -> Result<(), Box<dyn Error>> {
         compatible_versions.insert("7.18.7", version::v7_18_19::main);
         compatible_versions.insert("7.19.6", version::v7_18_19::main);
         compatible_versions.insert("7.20.6", version::v7_20_50_51::main);
-        compatible_versions.insert("7.21.1", version::v7_21::main);
+        compatible_versions.insert("7.21.3", version::v7_21::main);
     } else {
         // 仅蓝We使用
         compatible_versions.insert("7.48.6", version::v7_15_16_48::main);
@@ -76,15 +103,22 @@ fn main() -> Result<(), Box<dyn Error>> {
     }
     match compatible_versions.get(version) {
         Some(&value) => {
-            let options = [i18n::get("install_or_update"), i18n::get("uninstall")];
-            let index = select(&operation_tips(), &options).to_owned();
-            let is_install = index == 0;
-            println!(
-                "\n{}{}{}...\n",
-                i18n::get("begin_tips_1"),
-                info(options[index]),
-                i18n::get("begin_tips_2")
-            );
+            let options = &args.options;
+            let is_install = match (options.install, options.uninstall) {
+                (true, _) => true,
+                (_, true) => false,
+                _ => {
+                    let options = [i18n::get("install_or_update"), i18n::get("uninstall")];
+                    let index = select(&operation_tips(), &options).to_owned();
+                    println!(
+                        "\n{}{}{}...\n",
+                        i18n::get("begin_tips_1"),
+                        info(options[index]),
+                        i18n::get("begin_tips_2")
+                    );
+                    index == 0
+                }
+            };
             value(install_path.clone(), install_version.clone(), is_install);
             is_success = true;
         }
@@ -102,7 +136,7 @@ fn main() -> Result<(), Box<dyn Error>> {
 }
 
 /// 预置操作
-fn preset() -> (String, String) {
+fn preset(skip_check: bool) -> (String, String) {
     stdout(i18n::get("win_title"));
     println!(
         "{}{} {}\n",
@@ -129,7 +163,7 @@ fn preset() -> (String, String) {
         info(&install_path)
     );
     // 检查安装程序是否有最新版本
-    if is_internal_version(env!("PRODUCT_NAME")) {
+    if !skip_check && is_internal_version(env!("PRODUCT_NAME")) {
         tokio::runtime::Runtime::new().unwrap().block_on(async {
             let package = get_latest_package_ids(OPENX_PROJECT_ID, env!("CARGO_PKG_NAME"))
                 .await
