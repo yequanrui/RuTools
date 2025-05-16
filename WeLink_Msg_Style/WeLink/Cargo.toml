@@ -20,7 +20,7 @@ path = "../src/main.rs"
 OriginalFilename = "welink_msg_style_blue.exe"
 FileDescription = "WeLink Msg Style Installer"
 ProductName = "WeLink"
-ProductVersion = "7.51.6"
+ProductVersion = "7.52.3"
 LegalCopyright = "Copyright (c) 2019-2025. Huawei Technologies Co., Ltd. All Rights Reserved."
 
 [dependencies]
