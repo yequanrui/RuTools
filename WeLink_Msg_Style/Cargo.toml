@@ -11,8 +11,8 @@ keywords = ["WeLink", "Message", "Style"]
 categories = ["command-line-utilities"]
 
 [workspace.dependencies]
-clap = { version = "4.5", features = ["derive"] }
-console-utils = "1.7"
+clap = { version = "4", features = ["derive"] }
+console-utils = "1"
 rt_helper = { path = "../Helper" }
 tokio = { version = "1", features = ["full"] }
 

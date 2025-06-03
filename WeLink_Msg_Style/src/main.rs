@@ -73,7 +73,7 @@ fn main() -> Result<(), Box<dyn Error>> {
         compatible_versions.insert("7.19.6", version::v7_18_19::main);
         compatible_versions.insert("7.20.6", version::v7_20_50_51::main);
         compatible_versions.insert("7.21.6", version::v7_21_52::main);
-        compatible_versions.insert("7.22.6", version::v7_22::main);
+        compatible_versions.insert("7.22.10", version::v7_22::main);
     } else {
         // 仅蓝We使用
         compatible_versions.insert("7.48.6", version::v7_15_16_48::main);
