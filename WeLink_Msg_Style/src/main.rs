@@ -62,10 +62,10 @@ fn main() -> Result<(), Box<dyn Error>> {
     let mut compatible_versions: BTreeMap<&str, fn(String, String, bool)> = BTreeMap::new();
     if is_internal_version(env!("PRODUCT_NAME")) {
         // 仅红We（内部版本）使用
-        compatible_versions.insert("7.11.3", version::v7_11::main);
-        compatible_versions.insert("7.12.7", version::v7_12::main);
-        compatible_versions.insert("7.13.12", version::v7_13::main);
-        compatible_versions.insert("7.14.8", version::v7_14::main);
+        // compatible_versions.insert("7.11.3", version::v7_11::main);
+        // compatible_versions.insert("7.12.7", version::v7_12::main);
+        // compatible_versions.insert("7.13.12", version::v7_13::main);
+        // compatible_versions.insert("7.14.8", version::v7_14::main);
         compatible_versions.insert("7.15.8", version::v7_15_16_48::main);
         compatible_versions.insert("7.16.8", version::v7_15_16_48::main);
         compatible_versions.insert("7.17.16", version::v7_17_49::main);
@@ -74,6 +74,7 @@ fn main() -> Result<(), Box<dyn Error>> {
         compatible_versions.insert("7.20.6", version::v7_20_50_51::main);
         compatible_versions.insert("7.21.6", version::v7_21_52::main);
         compatible_versions.insert("7.22.10", version::v7_22::main);
+        compatible_versions.insert("7.23.3", version::v7_23::main);
     } else {
         // 仅蓝We使用
         compatible_versions.insert("7.48.6", version::v7_15_16_48::main);

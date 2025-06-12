@@ -14,8 +14,8 @@
 | [MT]             | #️⃣微软SDK中用于生成签名文件和目录的工具，仅用于自动获取管理员权限            | 5.2.3790.2076                 |
 | Client           | *️⃣Tauri客户端                                     | 1.0.0                         |
 | Helper           | *️⃣一些三方库的封装方法                                   | 1.1.0                         |
-| WeLink_Themes    | *️⃣WeLink主题替换工具                                 | 1.1.1                         |
-| WeLink_Msg_Style | *️⃣WeLink显眼包替换工具                                | 1.2.3                         |
+| WeLink_Themes    | *️⃣WeLink主题替换工具                                 | 1.1.2                         |
+| WeLink_Msg_Style | *️⃣WeLink显眼包替换工具                                | 1.2.4                         |
 
 [MT]: https://learn.microsoft.com/zh-cn/windows/win32/sbscs/mt-exe '点击跳转'
 
