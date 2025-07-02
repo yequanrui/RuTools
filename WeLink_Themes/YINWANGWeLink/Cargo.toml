@@ -1,33 +1,31 @@
 [package]
-name = "welink_msg_style"
+name = "welink_themes_blue_yinwang"
 version = { workspace = true }
 edition = { workspace = true }
 license = { workspace = true }
 description = { workspace = true }
 authors = ["yequanrui <yequanrui@qq.com>"]
-documentation = "https://yequanrui.github.io/WeTools/guides/"
-homepage = "https://yequanrui.github.io/WeTools/"
+documentation = "https://yequanrui.github.io/WeTools/welink/themes"
+homepage = "https://yequanrui.github.io/WeTools"
 repository = "https://github.com/yequanrui/RuTools"
 keywords = { workspace = true }
 categories = { workspace = true }
 build = "../src/build.rs"
 
 [[bin]]
-name = "welink_msg_style"
+name = "welink_themes_blue_yinwang"
 path = "../src/main.rs"
 
 [package.metadata.winres]
-OriginalFilename = "welink_msg_style.exe"
-FileDescription = "WeLink Msg Style Installer"
-ProductName = "WeLink_Desktop"
-ProductVersion = "7.23.12"
+OriginalFilename = "welink_themes_blue_yinwang.exe"
+FileDescription = "WeLink Themes Installer"
+ProductName = "引望WeLink"
+ProductVersion = "7.52.5"
 LegalCopyright = "Copyright (c) 2019-2025. Huawei Technologies Co., Ltd. All Rights Reserved."
 
 [dependencies]
-clap = { workspace = true }
 console-utils = { workspace = true }
 rt_helper = { workspace = true }
-tokio = { workspace = true }
 
 [target.'cfg(windows)'.build-dependencies]
 rt_helper = { path = "../../Helper" }

@@ -1,7 +1,8 @@
 use clap::{Args, Parser};
 use console_utils::input::select;
 use rt_helper::common::{
-    end_tips, is_internal_version, judge_version, open_url, operation_tips, wait_for_exit,
+    end_tips, is_internal_version, is_yinwang_version, judge_version, open_url, operation_tips,
+    wait_for_exit,
 };
 use rt_helper::console::{info, stdout, warning};
 use rt_helper::reqwest::{get_latest_package_ids, OPENX_DOWNLOAD_PAGE, OPENX_PROJECT_ID};
@@ -66,18 +67,21 @@ fn main() -> Result<(), Box<dyn Error>> {
         // compatible_versions.insert("7.12.7", version::v7_12::main);
         // compatible_versions.insert("7.13.12", version::v7_13::main);
         // compatible_versions.insert("7.14.8", version::v7_14::main);
-        compatible_versions.insert("7.15.8", version::v7_15_16_48::main);
-        compatible_versions.insert("7.16.8", version::v7_15_16_48::main);
+        // compatible_versions.insert("7.15.8", version::v7_15_16_48::main);
+        // compatible_versions.insert("7.16.8", version::v7_15_16_48::main);
         compatible_versions.insert("7.17.16", version::v7_17_49::main);
         compatible_versions.insert("7.18.7", version::v7_18_19::main);
         compatible_versions.insert("7.19.6", version::v7_18_19::main);
         compatible_versions.insert("7.20.6", version::v7_20_50_51::main);
         compatible_versions.insert("7.21.6", version::v7_21_52::main);
         compatible_versions.insert("7.22.10", version::v7_22::main);
-        compatible_versions.insert("7.23.8", version::v7_23::main);
+        compatible_versions.insert("7.23.12", version::v7_23::main);
+    } else if is_yinwang_version(env!("PRODUCT_NAME")) {
+        // 仅引望We使用
+        compatible_versions.insert("7.52.5", version::v7_21_52::main);
     } else {
         // 仅蓝We使用
-        compatible_versions.insert("7.48.6", version::v7_15_16_48::main);
+        // compatible_versions.insert("7.48.6", version::v7_15_16_48::main);
         compatible_versions.insert("7.49.6", version::v7_17_49::main);
         compatible_versions.insert("7.50.3", version::v7_20_50_51::main);
         compatible_versions.insert("7.51.6", version::v7_20_50_51::main);

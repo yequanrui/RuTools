@@ -1,5 +1,5 @@
 [workspace]
-members = ["WeLink", "WeLink_Desktop"]
+members = ["WeLink", "WeLink_Desktop", "YINWANGWeLink"]
 resolver = "2"
 
 [workspace.package]

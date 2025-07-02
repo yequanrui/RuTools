@@ -1,8 +1,8 @@
-use rt_helper::common::is_internal_version;
+use rt_helper::common::{is_internal_version, is_yinwang_version};
 
 // 产品包下载链接
 pub fn product_download_url() -> &'static str {
-    if is_internal_version(env!("PRODUCT_NAME")) {
+    if is_internal_version(env!("PRODUCT_NAME")) || is_yinwang_version(env!("PRODUCT_NAME")) {
         "https://onebox.huawei.com/v/14893661f51ee0f762b9d1dffe8b5aa0/list#linkFolder/1/29"
     } else {
         "https://www.huaweicloud.com/product/welink-download.html"
@@ -82,11 +82,13 @@ pub fn assets_list() -> Vec<&'static str> {
             "plugin/athenaAssistant/dist/index.html",
             // 群成员选择框
             "plugin/im/dist/memberChooser.html",
+            // 专属助手页面
+            "plugin/myAgent/dist/index.html",
             // 桌面右下角语音通话/多媒体会议提醒
             "plugin/UCconference/dist/videoConfView.html",
         ]
     } else {
-        // 仅蓝We使用
+        // 仅蓝We/引望We使用
         vec![
             // 登录页面-基本设置-网络检测弹窗
             "plugin/basic/networkdetection/dist/networkdetection.html",

@@ -13,9 +13,9 @@
 | [WeLink]         | 华为云WeLink，数字化办公协作平台                             | [7.52.3.577][WeLink-Download] |
 | [MT]             | #️⃣微软SDK中用于生成签名文件和目录的工具，仅用于自动获取管理员权限            | 5.2.3790.2076                 |
 | Client           | *️⃣Tauri客户端                                     | 1.0.0                         |
-| Helper           | *️⃣一些三方库的封装方法                                   | 1.1.0                         |
+| Helper           | *️⃣一些三方库的封装方法                                   | 1.1.1                         |
 | WeLink_Themes    | *️⃣WeLink主题替换工具                                 | 1.1.2                         |
-| WeLink_Msg_Style | *️⃣WeLink显眼包替换工具                                | 1.2.4                         |
+| WeLink_Msg_Style | *️⃣WeLink显眼包替换工具                                | 1.2.5                         |
 
 [MT]: https://learn.microsoft.com/zh-cn/windows/win32/sbscs/mt-exe '点击跳转'
 
@@ -60,8 +60,9 @@
 5. 修改`Cargo.toml`配置文件
     1. 红版WeLink配置：`WeLink_Msg_Style/WeLink_Desktop/Cargo.toml`
     2. 蓝版WeLink配置：`WeLink_Msg_Style/WeLink/Cargo.toml`
-    3. `version`值加1（逢10进1）
-    4. `ProductVersion`值为适配的WeLink版本
+    3. 引望WeLink配置：`WeLink_Msg_Style/YINWANGWeLink/Cargo.toml`
+    4. `version`值加1（逢10进1）
+    5. `ProductVersion`值为适配的WeLink版本
 6. 控制台执行`.\build.bat`，编译打包成发布包，发布包在根目录下的`dist`目录
 
 ### WeLink_Themes
@@ -73,8 +74,9 @@
 3. 修改`Cargo.toml`配置文件
     1. 红版WeLink配置：`WeLink_Themes/WeLink_Desktop/Cargo.toml`
     2. 蓝版WeLink配置：`WeLink_Themes/WeLink/Cargo.toml`
-    3. `version`值加1（逢10进1）
-    4. `ProductVersion`值为适配的WeLink版本
+    3. 引望WeLink配置：`WeLink_Themes/YINWANGWeLink/Cargo.toml`
+    4. `version`值加1（逢10进1）
+    5. `ProductVersion`值为适配的WeLink版本
 4. 控制台执行`.\build.bat`，编译打包成发布包，发布包在根目录下的`dist`目录
 
 [WT-Repository]: https://github.com/yequanrui/WeTools '点击跳转'

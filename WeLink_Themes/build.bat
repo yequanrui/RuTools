@@ -12,3 +12,9 @@ if exist %source_blue% (
 xcopy "%source_blue%" "..\dist\" /c /h /i /r /y
 if exist %target% xcopy "%source_blue%" "%target%" /c /h /i /r /y
 )
+set "source_blue_yinwang=target\release\welink_themes_blue_yinwang.exe"
+if exist %source_blue_yinwang% (
+..\MT\mt.exe -manifest ..\MT\app.manifest -outputresource:%source_blue_yinwang%;#1
+xcopy "%source_blue_yinwang%" "..\dist\" /c /h /i /r /y
+if exist %target% xcopy "%source_blue_yinwang%" "%target%" /c /h /i /r /y
+)

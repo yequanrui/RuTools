@@ -1,9 +1,9 @@
 use crate::i18n::get_by_lang;
-use rt_helper::common::is_internal_version;
+use rt_helper::common::{is_internal_version, is_yinwang_version};
 
 /// 显眼包格式分享表格链接
 pub fn msg_style_table() -> &'static str {
-    if is_internal_version(env!("PRODUCT_NAME")) {
+    if is_internal_version(env!("PRODUCT_NAME")) || is_yinwang_version(env!("PRODUCT_NAME")) {
         "https://onebox.huawei.com/v/6a867afe371ad4ed775adbff18b7f5f5?type=0"
     } else {
         "https://kdocs.cn/l/cs7U6nzAF1GG"
@@ -12,7 +12,7 @@ pub fn msg_style_table() -> &'static str {
 
 /// 显眼包帮助文档链接
 pub fn msg_style_help() -> &'static str {
-    if is_internal_version(env!("PRODUCT_NAME")) {
+    if is_internal_version(env!("PRODUCT_NAME")) || is_yinwang_version(env!("PRODUCT_NAME")) {
         "https://welink-themes.openx.huawei.com/welink/style-msg/"
     } else {
         "https://yequanrui.github.io/WeTools/welink/style-msg/"
@@ -128,7 +128,7 @@ pub fn toolbar_cb_replace(key1: &str, key2: &str) -> String {
     ));
     // 编辑显眼格式
     res.push_str(&format!(
-        "case'{MODIFY}':{{const o=await pnp({{dialogId:1223,title:{},inputParam:{{inputType:'text',placeholders:'{}: <span>{{{{ORI_CONTENT}}}}</span>',maxLength:1e5,defaultValue:(localStorage.getItem(mc)||'')}}}});if(o.ret){{const e=o.param.input_type_text.trim();localStorage.setItem(mc,e);pt({})}}e.open&&e.open(!1)}}break;",
+        "case'{MODIFY}':{{const o=await pnp({{dialogId:1223,title:{},inputParam:{{inputType:'text',placeholders:`${{{}}}: <span>{{{{ORI_CONTENT}}}}</span>`,maxLength:1e5,defaultValue:(localStorage.getItem(mc)||'')}}}});if(o.ret){{const e=o.param.input_type_text.trim();localStorage.setItem(mc,e);pt({})}}e.open&&e.open(!1)}}break;",
         get_by_lang("modify_msg_style"),
         get_by_lang("example"),
         get_by_lang("modify_msg_style_success"),

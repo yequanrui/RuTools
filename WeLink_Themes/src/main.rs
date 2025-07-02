@@ -47,7 +47,7 @@ fn main() -> Result<(), Box<dyn Error>> {
             _ => {}
         }
     } else {
-        // 仅蓝We使用
+        // 仅蓝We/引望We使用
         let options = [i18n::get("dev_theme"), i18n::get("uninstall_theme")];
         let index = select(&operation_tips(), &options).to_owned();
         match Some(index) {

@@ -326,3 +326,8 @@ pub fn judge_version(origin_version: &str, target_version: &str) -> bool {
 pub fn is_internal_version(product_name: &str) -> bool {
     product_name == "WeLink_Desktop"
 }
+
+/// 是否引望版本
+pub fn is_yinwang_version(product_name: &str) -> bool {
+    product_name == "引望WeLink"
+}
