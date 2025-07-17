@@ -167,7 +167,7 @@ pub fn write_to(file_path: String, replaced_content: String, content: String) {
     println!("-- {}\n", info(get("write_succeeded")));
 }
 
-/// 替换文本，替换前判断本是否存在
+/// 替换文本，替换前判断文本是否存在
 pub fn replace(origin: &str, from: &str, to: &str) -> String {
     if !origin.contains(from) {
         println!(

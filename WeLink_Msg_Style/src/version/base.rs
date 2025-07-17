@@ -17,8 +17,8 @@ pub fn main(install_path: String, install_version: String, is_install: bool, im_
         is_install,
     );
     // 替换菜单逻辑
-    let editor_toolbar = "{type:\"CodeBlockBtn\",toolItemTestid:\"CodeBlockBtn000123\",title:window.language.CODEBLCOK,width:20,height:20,fill:\"#666\",hide:!1,isShow:!0}]";
-    let editor_toolbar_new = editor_toolbar.replace("]", &toolbar_replace());
+    let editor_toolbar = "{type:\"CodeBlockBtn\",toolItemTestid:\"CodeBlockBtn000123\",title:window.language.CODEBLCOK,width:20,height:20,fill:\"#666\",hide:!1,isShow:!0}";
+    let editor_toolbar_new = editor_toolbar.replace("}", &toolbar_replace());
     let editor_toolbar_cb = "l=>{switch(l.type){";
     let editor_toolbar_cb_new = toolbar_cb_replace("l", "e");
     replace_arr = vec![

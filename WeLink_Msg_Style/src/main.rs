@@ -78,7 +78,7 @@ fn main() -> Result<(), Box<dyn Error>> {
         compatible_versions.insert("7.23.12", version::v7_23::main);
         compatible_versions.insert("7.24.10", version::v7_24::main);
     } else if is_yinwang_version(env!("PRODUCT_NAME")) {
-        // 仅引望We使用
+        // 仅引望蓝We使用
         compatible_versions.insert("7.52.5", version::v7_21_52::main);
     } else {
         // 仅蓝We使用
