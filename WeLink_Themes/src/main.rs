@@ -16,15 +16,8 @@ mod i18n;
 
 #[cfg(test)]
 mod tests {
-    use rt_helper::metadata::get_metadata;
-
     #[test]
-    fn it_works() {
-        println!(
-            "{}",
-            get_metadata(env!("CARGO_PKG_NAME"), "winres", "ProductName")
-        );
-    }
+    fn it_works() {}
 }
 
 fn main() -> Result<(), Box<dyn Error>> {

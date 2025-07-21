@@ -77,13 +77,16 @@ pub fn assets_list() -> Vec<&'static str> {
     let spec_list = if is_internal_version(env!("PRODUCT_NAME")) {
         // 仅红We（内部版本）使用
         vec![
+            // 基座页面-收藏弹框
+            "pedestal/wecode.html",
+            // 助手广场页面
+            "plugin/assistantConn/dist/index.html",
             // 聊天消息页面-小微助手侧滑框
-            // 小微助手页面
             "plugin/athenaAssistant/dist/index.html",
+            // 聊天消息页面-专属助手页面
+            "plugin/myAgent/dist/index.html",
             // 群成员选择框
             "plugin/im/dist/memberChooser.html",
-            // 专属助手页面
-            "plugin/myAgent/dist/index.html",
             // 桌面右下角语音通话/多媒体会议提醒
             "plugin/UCconference/dist/videoConfView.html",
         ]

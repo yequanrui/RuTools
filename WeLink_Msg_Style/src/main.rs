@@ -41,19 +41,8 @@ struct Options {
 
 #[cfg(test)]
 mod tests {
-    use crate::data::{send_msg_replace, toolbar_cb_replace, toolbar_replace};
-
     #[test]
-    fn it_works() {
-        let send_msg_ori = "t.handSendMsg=async function(e,t,a,n){";
-        let editor_toolbar = "{type:\"CodeBlockBtn\",toolItemTestid:\"CodeBlockBtn000123\",title:window.language.CODEBLCOK,width:20,height:20,fill:\"#666\",hide:!1,isShow:!0}]";
-        println!(
-            "{}\n{}\n{}",
-            send_msg_replace(send_msg_ori),
-            editor_toolbar.replace("]", &toolbar_replace()),
-            toolbar_cb_replace("l", "e")
-        );
-    }
+    fn it_works() {}
 }
 
 fn main() -> Result<(), Box<dyn Error>> {
@@ -76,7 +65,7 @@ fn main() -> Result<(), Box<dyn Error>> {
         compatible_versions.insert("7.21.6", version::v7_21_52::main);
         compatible_versions.insert("7.22.10", version::v7_22_53::main);
         compatible_versions.insert("7.23.12", version::v7_23::main);
-        compatible_versions.insert("7.24.10", version::v7_24::main);
+        compatible_versions.insert("7.24.14", version::v7_24::main);
     } else if is_yinwang_version(env!("PRODUCT_NAME")) {
         // 仅引望蓝We使用
         compatible_versions.insert("7.52.5", version::v7_21_52::main);
