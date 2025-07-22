@@ -7,7 +7,7 @@ pub fn main(
     is_install: bool,
     im_num: &str,
     send_key: &str,
-    cd_key: &str,
+    cb_key: &str,
     open_key: &str,
 ) {
     // 替换发送消息逻辑
@@ -27,8 +27,8 @@ pub fn main(
     // 替换菜单逻辑
     let editor_toolbar = "{type:\"CodeBlockBtn\",toolItemTestid:\"CodeBlockBtn000123\",title:window.language.CODEBLCOK,width:20,height:20,fill:\"#666\",hide:!1,isShow:!0}";
     let editor_toolbar_new = editor_toolbar.replace("}", &toolbar_replace());
-    let editor_toolbar_cb = &format!("{cd_key}=>{{switch({cd_key}.type){{");
-    let editor_toolbar_cb_new = toolbar_cb_replace(cd_key, open_key);
+    let editor_toolbar_cb = &format!("{cb_key}=>{{switch({cb_key}.type){{");
+    let editor_toolbar_cb_new = toolbar_cb_replace(cb_key, open_key);
     replace_arr = vec![
         vec![editor_toolbar, &editor_toolbar_new],
         vec![editor_toolbar_cb, &editor_toolbar_cb_new],
