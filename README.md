@@ -15,7 +15,7 @@
 | Client           | *️⃣Tauri客户端                                     | 1.0.0                         |
 | Helper           | *️⃣一些三方库的封装方法                                   | 1.1.1                         |
 | WeLink_Themes    | *️⃣WeLink主题替换工具                                 | 1.1.3                         |
-| WeLink_Msg_Style | *️⃣WeLink显眼包替换工具                                | 1.2.8                         |
+| WeLink_Msg_Style | *️⃣WeLink显眼包替换工具                                | 1.3.0                         |
 
 [MT]: https://learn.microsoft.com/zh-cn/windows/win32/sbscs/mt-exe '点击跳转'
 
