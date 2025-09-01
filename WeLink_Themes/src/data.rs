@@ -22,6 +22,8 @@ pub fn assets_list() -> Vec<&'static str> {
         "pedestal/index.html",
         // 登录页面-基本设置-设备信息
         "plugin/basic/deviceInfo/dist/deviceInfo.html",
+        // 基座页面-消息弹窗
+        "plugin/basic/notification/dist/notification.html",
         // 基座页面-设置弹窗
         "plugin/basic/settingFrame/dist/settingFrame.html",
         // 基座页面-通话与拨号弹框
@@ -56,6 +58,8 @@ pub fn assets_list() -> Vec<&'static str> {
         "plugin/im/dist/forwardModle.html",
         // 聊天消息页面-讨论组/群组-设置弹框
         "plugin/im/dist/groupInfo.html",
+        // 聊天消息页面-讨论组/群组-群名片
+        "plugin/im/dist/groupVCard.html",
         // 聊天消息页面-聊天记录弹框
         "plugin/im/dist/historyManager.html",
         // 聊天消息页面-群成员导入弹框

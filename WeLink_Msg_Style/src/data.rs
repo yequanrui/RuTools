@@ -115,7 +115,7 @@ pub fn toolbar_replace() -> String {
 
 /// 工具栏菜单点击事件的代码
 ///
-/// key1取替换参数"="前的首单词
+/// key1取替换参数"="前的单词
 /// key2取".open"前的单词
 pub fn toolbar_cb_replace(key1: &str, key2: &str) -> String {
     let mut res = String::new();

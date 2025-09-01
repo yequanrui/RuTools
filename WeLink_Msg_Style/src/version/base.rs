@@ -66,3 +66,15 @@ pub fn main1(install_path: String, install_version: String, is_install: bool, im
         "e",
     );
 }
+
+pub fn main2(install_path: String, install_version: String, is_install: bool, im_num: &str) {
+    main(
+        install_path,
+        install_version,
+        is_install,
+        im_num,
+        "e,t,n,a",
+        "l",
+        "e",
+    );
+}
