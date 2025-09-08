@@ -65,7 +65,7 @@ fn main() -> Result<(), Box<dyn Error>> {
         compatible_versions.insert("7.21.6", version::v7_21_52::main);
         compatible_versions.insert("7.22.10", version::v7_22_53::main);
         compatible_versions.insert("7.23.12", version::v7_23::main);
-        compatible_versions.insert("7.24.16", version::v7_24::main);
+        compatible_versions.insert("7.24.16", version::v7_24_54::main);
         compatible_versions.insert("7.25.12", version::v7_25::main);
         compatible_versions.insert("7.26.2", version::v7_26::main);
     } else if is_yinwang_version(env!("PRODUCT_NAME")) {
@@ -80,6 +80,7 @@ fn main() -> Result<(), Box<dyn Error>> {
         compatible_versions.insert("7.51.6", version::v7_20_50_51::main);
         compatible_versions.insert("7.52.3", version::v7_21_52::main);
         compatible_versions.insert("7.53.7", version::v7_22_53::main);
+        compatible_versions.insert("7.54.7", version::v7_24_54::main);
     }
     let keys: Vec<&str> = compatible_versions.clone().into_keys().collect();
     println!(

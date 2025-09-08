@@ -10,6 +10,6 @@ pub mod v7_20_50_51;
 pub mod v7_21_52;
 pub mod v7_22_53;
 pub mod v7_23;
-pub mod v7_24;
+pub mod v7_24_54;
 pub mod v7_25;
 pub mod v7_26;
