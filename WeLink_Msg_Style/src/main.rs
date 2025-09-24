@@ -67,11 +67,12 @@ fn main() -> Result<(), Box<dyn Error>> {
         compatible_versions.insert("7.23.12", version::v7_23::main);
         compatible_versions.insert("7.24.16", version::v7_24_54::main);
         compatible_versions.insert("7.25.12", version::v7_25::main);
-        compatible_versions.insert("7.26.2", version::v7_26::main);
+        compatible_versions.insert("7.26.8", version::v7_26::main);
     } else if is_yinwang_version(env!("PRODUCT_NAME")) {
         // 仅引望蓝We使用
         compatible_versions.insert("7.52.5", version::v7_21_52::main);
         compatible_versions.insert("7.53.7", version::v7_22_53::main);
+        compatible_versions.insert("7.54.7", version::v7_24_54::main);
     } else {
         // 仅蓝We使用
         // compatible_versions.insert("7.48.6", version::v7_15_16_48::main);

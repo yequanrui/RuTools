@@ -20,7 +20,7 @@ path = "../src/main.rs"
 OriginalFilename = "welink_themes_blue_yinwang.exe"
 FileDescription = "WeLink Themes Installer"
 ProductName = "引望WeLink"
-ProductVersion = "7.53.7"
+ProductVersion = "7.54.7"
 LegalCopyright = "Copyright (c) 2019-2025. Huawei Technologies Co., Ltd. All Rights Reserved."
 
 [dependencies]
