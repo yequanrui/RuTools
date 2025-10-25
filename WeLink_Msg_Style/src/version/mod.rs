@@ -13,3 +13,4 @@ pub mod v7_23;
 pub mod v7_24_54;
 pub mod v7_25;
 pub mod v7_26;
+pub mod v7_27;

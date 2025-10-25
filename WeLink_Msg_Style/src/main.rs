@@ -67,7 +67,9 @@ fn main() -> Result<(), Box<dyn Error>> {
         compatible_versions.insert("7.23.12", version::v7_23::main);
         compatible_versions.insert("7.24.16", version::v7_24_54::main);
         compatible_versions.insert("7.25.12", version::v7_25::main);
-        compatible_versions.insert("7.26.8", version::v7_26::main);
+        compatible_versions.insert("7.26.10", version::v7_26::main);
+        compatible_versions.insert("7.27.16", version::v7_27::main);
+        compatible_versions.insert("999.999.99", version::v7_26::main); // 此为WeLink开发版本号，对应适配配置随时会变
     } else if is_yinwang_version(env!("PRODUCT_NAME")) {
         // 仅引望蓝We使用
         compatible_versions.insert("7.52.5", version::v7_21_52::main);
@@ -83,15 +85,20 @@ fn main() -> Result<(), Box<dyn Error>> {
         compatible_versions.insert("7.53.7", version::v7_22_53::main);
         compatible_versions.insert("7.54.7", version::v7_24_54::main);
     }
-    let keys: Vec<&str> = compatible_versions.clone().into_keys().collect();
+    let supported_versions: Vec<&str> = compatible_versions
+        .keys()
+        .filter(|k| !k.starts_with("999"))
+        .cloned()
+        .collect();
     println!(
         "{}: {}\n",
         i18n::get("supported_versions"),
-        info(keys.join(", "))
+        info(supported_versions.join(", "))
     );
     // 判断版本是否匹配（忽略小版本差异）并开始执行
     let mut is_success = false;
     let mut version = install_version.as_str();
+    let keys: Vec<&str> = compatible_versions.clone().into_keys().collect();
     for &key in &keys {
         let v = version.rsplit_once(".").unwrap();
         if key != version && key.starts_with(&format!("{}.", v.0)) {

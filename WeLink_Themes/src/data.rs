@@ -20,6 +20,8 @@ pub fn assets_list() -> Vec<&'static str> {
     let common_list = vec![
         // 基座页面，包括登录页面、聊天消息页面、通讯录（关注/组织/团队/外部/公众号）
         "pedestal/index.html",
+        // 基座页面-收藏弹框
+        "pedestal/wecode.html",
         // 登录页面-基本设置-设备信息
         "plugin/basic/deviceInfo/dist/deviceInfo.html",
         // 基座页面-消息弹窗
@@ -30,6 +32,12 @@ pub fn assets_list() -> Vec<&'static str> {
         "plugin/callRecord/dist/callRecord.html",
         // 基座页面-通话与拨号弹框-会议详情弹框
         "plugin/callRecord/dist/meetingDetails.html",
+        // 会议页面
+        "plugin/conference/dist/index.html",
+        // 预约会议弹窗
+        "plugin/conference/dist/bookMeeting.html",
+        // 加入会议弹窗
+        "plugin/conference/dist/joinMeeting.html",
         // 基座页面-更换头像弹框
         "plugin/contact/dist/avatarSetting.html",
         // 基座页面-查看头像弹框
@@ -45,6 +53,8 @@ pub fn assets_list() -> Vec<&'static str> {
         // 基座页面-其他场景中添加成员弹框
         // 基座页面-通话中添加成员弹框
         "plugin/ContactChooser/dist/contact-chooser.html",
+        // 问题反馈弹窗
+        "plugin/feedback/dist/feedback.html",
         // 基座页面-顶部全局搜索框
         "plugin/globalSearch/dist/global-search.html",
         // 基座页面-设置弹窗-清理群组弹框
@@ -81,8 +91,6 @@ pub fn assets_list() -> Vec<&'static str> {
     let spec_list = if is_internal_version(env!("PRODUCT_NAME")) {
         // 仅红We（内部版本）使用
         vec![
-            // 基座页面-收藏弹框
-            "pedestal/wecode.html",
             // 助手广场页面
             "plugin/assistantConn/dist/index.html",
             // 聊天消息页面-小微助手侧滑框
@@ -91,6 +99,8 @@ pub fn assets_list() -> Vec<&'static str> {
             "plugin/myAgent/dist/index.html",
             // 群成员选择框
             "plugin/im/dist/memberChooser.html",
+            // 来电提醒消息弹框
+            "plugin/imCloudInstantmeetingPc/dist/videoConfView.html",
             // 桌面右下角语音通话/多媒体会议提醒
             "plugin/UCconference/dist/videoConfView.html",
         ]
@@ -103,20 +113,12 @@ pub fn assets_list() -> Vec<&'static str> {
             "plugin/business/dist/index.html",
             // 日历页面
             "plugin/calendar/web/index.html",
-            // 会议页面
-            "plugin/conference/dist/index.html",
-            // 预约会议弹窗
-            "plugin/conference/dist/bookMeeting.html",
-            // 加入会议弹窗
-            "plugin/conference/dist/joinMeeting.html",
             // 投影弹窗
             "plugin/eshare/dist/eshare.html",
             // 直播弹窗
             "plugin/live/dist/index.html",
             // Wifi一键连接弹窗
             "plugin/OneWIFI/dist/index.html",
-            // 问题反馈弹窗
-            "plugin/feedback/dist/feedback.html",
         ]
     };
     common_list
