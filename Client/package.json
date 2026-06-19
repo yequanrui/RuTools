@@ -21,24 +21,24 @@
     "tauri": "tauri"
   },
   "dependencies": {
-    "@opentiny/vue": "^3.26.0",
-    "@opentiny/vue-locale": "^3.26.0",
+    "@opentiny/vue": "^3.30.0",
+    "@opentiny/vue-locale": "^3.30.0",
     "@tauri-apps/api": "^2",
     "@tauri-apps/plugin-autostart": "^2",
     "@tauri-apps/plugin-opener": "^2",
-    "vue": "^3.5.22",
-    "vue-i18n": "^11.1.12",
-    "vue-router": "4.6.3"
+    "vue": "^3.5.38",
+    "vue-i18n": "^11.4.6",
+    "vue-router": "5.1.0"
   },
   "devDependencies": {
     "@opentiny/unplugin-tiny-vue": "^1.0.0",
     "@tauri-apps/cli": "^2",
-    "@vitejs/plugin-vue": "^6.0.1",
-    "unplugin-auto-import": "^20.1.0",
-    "unplugin-vue-components": "^29.2.0",
-    "vite": "^7.1.5"
+    "@vitejs/plugin-vue": "^6.0.7",
+    "unplugin-auto-import": "^21.0.0",
+    "unplugin-vue-components": "^32.1.0",
+    "vite": "^8.0.16"
   },
-  "packageManager": "pnpm@8.6.12",
+  "packageManager": "pnpm@10.34.3",
   "private": true,
   "license": "MIT",
   "author": {
